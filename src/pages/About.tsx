@@ -3,14 +3,14 @@ import { Award, Target, Heart } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import SectionHeader from "@/components/SectionHeader";
 import Seo from "@/components/Seo";
-import director1 from "@/assets/director-1.jpg";
-import director2 from "@/assets/director-2.jpg";
-import director3 from "@/assets/director-3.jpg";
+import bukola from "@/assets/team-bukola.jpg";
+import babs from "@/assets/team-babs.jpg";
+import hakeem from "@/assets/team-hakeem.jpg";
 
 const directors = [
-  { name: "Amb. Dr. Mrs. Olubukola Abitoye", role: "Managing Director", img: director3 },
-  { name: "Babs Olugbemi", role: "Independent Director", img: director1 },
-  { name: "Engr Hakeem Ademola Adeoye", role: "Non Executive Director", img: director2 },
+  { name: "Amb. Dr. Mrs. Olubukola Abitoye", role: "Managing Director", img: bukola },
+  { name: "Babs Olugbemi", role: "Independent Director", img: babs },
+  { name: "Engr Hakeem Ademola Adeoye", role: "Non Executive Director", img: hakeem },
 ];
 
 const About = () => (
