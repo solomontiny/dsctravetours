@@ -116,7 +116,7 @@ const BookingForm = ({ compact = false, source = "website", defaultDestination =
         </select>
       </Field>
 
-      <Button type="submit" disabled={submitting} className="h-auto rounded-xl px-6 py-3 text-sm md:self-end">
+      <Button type="submit" disabled={submitting} className="h-auto w-full rounded-xl px-6 py-3 text-sm md:w-auto md:self-end">
         {submitting ? (
           <>
             <Loader2 className="mr-2 h-4 w-4 animate-spin" />
