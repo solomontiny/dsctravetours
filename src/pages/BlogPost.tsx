@@ -67,10 +67,10 @@ const BlogPost = () => {
               <span className="inline-flex items-center gap-2 rounded-full bg-background/90 px-3 py-1 text-xs font-medium text-primary backdrop-blur">
                 {post.category}
               </span>
-              <h1 className="mt-4 font-display text-4xl font-medium leading-[1.05] text-primary-foreground md:text-5xl">
+              <h1 className="mt-4 font-display text-[2rem] font-medium leading-[1.1] text-primary-foreground sm:text-4xl md:text-5xl">
                 {post.title}
               </h1>
-              <div className="mt-5 flex flex-wrap items-center gap-5 text-sm text-primary-foreground/85">
+              <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-primary-foreground/85">
                 <span className="inline-flex items-center gap-1.5"><User className="h-4 w-4" /> {post.author}</span>
                 <span className="inline-flex items-center gap-1.5"><Calendar className="h-4 w-4" /> {new Date(post.date).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })}</span>
                 <span className="inline-flex items-center gap-1.5"><Clock className="h-4 w-4" /> {post.readTime}</span>
