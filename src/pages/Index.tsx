@@ -195,7 +195,7 @@ const Index = () => {
       </section>
 
       {/* Services */}
-      <section className="py-24 md:py-32">
+      <section className="py-16 sm:py-20 md:py-32">
         <div className="container-wide">
           <SectionHeader
             eyebrow="What we do"
@@ -231,7 +231,7 @@ const Index = () => {
       </section>
 
       {/* Destinations */}
-      <section className="bg-secondary/40 py-24 md:py-32">
+      <section className="bg-secondary/40 py-16 sm:py-20 md:py-32">
         <div className="container-wide">
           <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
             <SectionHeader
@@ -255,7 +255,7 @@ const Index = () => {
       </section>
 
       {/* Why DSC */}
-      <section className="py-24 md:py-32">
+      <section className="py-16 sm:py-20 md:py-32">
         <div className="container-wide">
           <SectionHeader
             eyebrow="Why DSC"
@@ -288,7 +288,7 @@ const Index = () => {
       </section>
 
       {/* Testimonials */}
-      <section className="bg-secondary/40 py-24 md:py-32">
+      <section className="bg-secondary/40 py-16 sm:py-20 md:py-32">
         <div className="container-wide">
           <SectionHeader
             eyebrow="Travelers' stories"
@@ -350,7 +350,7 @@ const Index = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-24 md:py-32">
+      <section className="py-16 sm:py-20 md:py-32">
         <div className="container-wide">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

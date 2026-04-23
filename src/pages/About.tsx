@@ -26,7 +26,7 @@ const About = () => (
     />
 
     {/* Story */}
-    <section className="py-20 md:py-28">
+    <section className="py-14 sm:py-20 md:py-28">
       <div className="container-tight grid gap-12 lg:grid-cols-2 lg:items-center">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
@@ -69,7 +69,7 @@ const About = () => (
     </section>
 
     {/* Vision & Mission */}
-    <section className="bg-gradient-hero py-20 md:py-28">
+    <section className="bg-gradient-hero py-14 sm:py-20 md:py-28">
       <div className="container-wide">
         <SectionHeader eyebrow="Purpose" title="Why we do this" />
         <div className="mt-14 grid gap-6 md:grid-cols-2">
@@ -111,7 +111,7 @@ const About = () => (
     </section>
 
     {/* Board */}
-    <section className="py-20 md:py-28">
+    <section className="py-14 sm:py-20 md:py-28">
       <div className="container-wide">
         <SectionHeader
           eyebrow="Leadership"
