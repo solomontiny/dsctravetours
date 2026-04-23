@@ -153,18 +153,18 @@ const Index = () => {
               <Star className="h-3 w-3 fill-accent text-accent" />
               Premium travel · Rated 4.9
             </span>
-            <h1 className="mt-5 font-display text-5xl font-medium leading-[1.02] text-primary md:text-7xl lg:text-[5.25rem]">
+            <h1 className="mt-5 font-display text-[2.5rem] font-medium leading-[1.05] text-primary sm:text-5xl md:text-7xl lg:text-[5.25rem]">
               Travel beyond <em className="font-display italic text-accent">ordinary</em>.
             </h1>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl">
+            <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg md:text-xl md:mt-6">
               Curated journeys from Lagos to the world. Flights, visas, hotels and tours —
               handled with quiet excellence by DSC Travels & Tours.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Button asChild size="lg" className="rounded-full px-7 shadow-elevated">
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap md:mt-8">
+              <Button asChild size="lg" className="w-full rounded-full px-7 shadow-elevated sm:w-auto">
                 <Link to="/packages">Explore packages <ArrowRight className="ml-2 h-4 w-4" /></Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="rounded-full bg-card/70 px-7 backdrop-blur-md">
+              <Button asChild variant="outline" size="lg" className="w-full rounded-full bg-card/70 px-7 backdrop-blur-md sm:w-auto">
                 <Link to="/contact">Talk to a planner</Link>
               </Button>
             </div>
@@ -195,7 +195,7 @@ const Index = () => {
       </section>
 
       {/* Services */}
-      <section className="py-24 md:py-32">
+      <section className="py-16 sm:py-20 md:py-32">
         <div className="container-wide">
           <SectionHeader
             eyebrow="What we do"
@@ -231,7 +231,7 @@ const Index = () => {
       </section>
 
       {/* Destinations */}
-      <section className="bg-secondary/40 py-24 md:py-32">
+      <section className="bg-secondary/40 py-16 sm:py-20 md:py-32">
         <div className="container-wide">
           <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
             <SectionHeader
@@ -255,7 +255,7 @@ const Index = () => {
       </section>
 
       {/* Why DSC */}
-      <section className="py-24 md:py-32">
+      <section className="py-16 sm:py-20 md:py-32">
         <div className="container-wide">
           <SectionHeader
             eyebrow="Why DSC"
@@ -288,7 +288,7 @@ const Index = () => {
       </section>
 
       {/* Testimonials */}
-      <section className="bg-secondary/40 py-24 md:py-32">
+      <section className="bg-secondary/40 py-16 sm:py-20 md:py-32">
         <div className="container-wide">
           <SectionHeader
             eyebrow="Travelers' stories"
@@ -350,7 +350,7 @@ const Index = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-24 md:py-32">
+      <section className="py-16 sm:py-20 md:py-32">
         <div className="container-wide">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

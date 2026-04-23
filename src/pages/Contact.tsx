@@ -173,15 +173,15 @@ const ContactCard = ({
       <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-accent-soft text-primary">
         {icon}
       </div>
-      <div>
+      <div className="min-w-0 flex-1">
         <div className="text-xs uppercase tracking-wider text-muted-foreground">{title}</div>
-        <div className="mt-1 font-medium text-primary">{text}</div>
+        <div className="mt-1 break-words font-medium text-primary">{text}</div>
       </div>
     </div>
   );
   if (href) {
     return (
-      <a href={href} {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}>
+      <a href={href} className="block" {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}>
         {inner}
       </a>
     );

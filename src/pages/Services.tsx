@@ -29,7 +29,7 @@ const Services = () => (
       description="Seven services, one team. We handle the planning, paperwork and logistics so your only job is to show up and enjoy."
     />
 
-    <section className="py-20 md:py-28">
+    <section className="py-14 sm:py-20 md:py-28">
       <div className="container-wide">
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {services.map((s, i) => (
