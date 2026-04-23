@@ -5,7 +5,7 @@ type Props = { eyebrow?: string; title: string; description?: string };
 const PageHero = ({ eyebrow, title, description }: Props) => {
   return (
     <section className="relative overflow-hidden bg-gradient-hero">
-      <div className="container-wide py-20 md:py-28">
+      <div className="container-wide py-16 sm:py-20 md:py-28">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -13,11 +13,11 @@ const PageHero = ({ eyebrow, title, description }: Props) => {
           className="max-w-3xl"
         >
           {eyebrow && <span className="eyebrow">{eyebrow}</span>}
-          <h1 className="mt-3 font-display text-4xl font-medium leading-[1.05] text-primary md:text-6xl">
+          <h1 className="mt-3 font-display text-[2.25rem] font-medium leading-[1.1] text-primary sm:text-4xl md:text-6xl">
             {title}
           </h1>
           {description && (
-            <p className="mt-5 max-w-2xl text-lg text-muted-foreground md:text-xl">
+            <p className="mt-4 max-w-2xl text-base text-muted-foreground sm:text-lg md:mt-5 md:text-xl">
               {description}
             </p>
           )}
