@@ -94,10 +94,10 @@ const TourDetails = () => {
               <span className="h-1 w-1 rounded-full bg-muted-foreground" />
               <Star className="h-3 w-3 fill-accent text-accent" /> {pkg.rating.toFixed(1)}
             </span>
-            <h1 className="mt-4 font-display text-4xl font-medium leading-[1.05] text-primary-foreground md:text-6xl">
+            <h1 className="mt-4 font-display text-[2.25rem] font-medium leading-[1.05] text-primary-foreground sm:text-4xl md:text-6xl">
               {pkg.title}
             </h1>
-            <div className="mt-4 flex flex-wrap items-center gap-5 text-sm text-primary-foreground/85">
+            <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-primary-foreground/85">
               <span className="inline-flex items-center gap-1.5"><MapPin className="h-4 w-4" /> {pkg.destination}, {pkg.country}</span>
               <span className="inline-flex items-center gap-1.5"><Clock className="h-4 w-4" /> {pkg.duration}</span>
               <span className="inline-flex items-center gap-1.5">From <strong className="font-display text-base text-primary-foreground">${pkg.price.toLocaleString()}</strong> / person</span>
