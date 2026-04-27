@@ -3,27 +3,14 @@ import { motion } from "framer-motion";
 import { Calendar, MapPin, Users, User, Send, Loader2, CheckCircle2, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
-import { site } from "@/lib/site";
 import { bookingSchema } from "@/lib/validation";
 import { useBookingSubmit } from "@/hooks/use-booking-submit";
+import { buildWhatsAppUrl, bookingFollowUpMessage } from "@/lib/whatsapp";
 
 type Props = {
   compact?: boolean;
   source?: "website" | "tour-details" | "contact";
   defaultDestination?: string;
-};
-
-const buildWhatsAppUrl = (form: { name: string; destination: string; date: string; travelers: string }) => {
-  const lines = [
-    "Hello DSC Travels & Tours,",
-    "",
-    "I just submitted a booking request:",
-    `• Name: ${form.name}`,
-    `• Destination: ${form.destination}`,
-    `• Date: ${form.date}`,
-    `• Travelers: ${form.travelers}`,
-  ];
-  return `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(lines.join("\n"))}`;
 };
 
 const BookingForm = ({ compact = false, source = "website", defaultDestination = "" }: Props) => {
