@@ -24,7 +24,7 @@ import BookingForm from "@/components/BookingForm";
 import SectionHeader from "@/components/SectionHeader";
 import PackageCard from "@/components/PackageCard";
 import Seo from "@/components/Seo";
-import { packages } from "@/lib/packages";
+import { packages, featuredSlugs } from "@/lib/packages";
 import { site } from "@/lib/site";
 
 const services = [
