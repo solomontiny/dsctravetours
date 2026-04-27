@@ -230,6 +230,32 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Featured packages (current promos) */}
+      <section className="bg-gradient-hero py-16 sm:py-20 md:py-32">
+        <div className="container-wide">
+          <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+            <SectionHeader
+              align="left"
+              eyebrow="Featured offers"
+              title="This season's headline trips"
+              description="Cruises and curated escapes our planners are booking right now — limited dates, locked-in rates."
+              className="md:max-w-xl"
+            />
+            <Button asChild variant="outline" className="rounded-full">
+              <Link to="/packages">All packages <ArrowRight className="ml-2 h-4 w-4" /></Link>
+            </Button>
+          </div>
+
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {packages
+              .filter((p) => featuredSlugs.includes(p.slug))
+              .map((p, i) => (
+                <PackageCard key={p.slug} pkg={p} index={i} />
+              ))}
+          </div>
+        </div>
+      </section>
+
       {/* Destinations */}
       <section className="bg-secondary/40 py-16 sm:py-20 md:py-32">
         <div className="container-wide">
@@ -238,7 +264,7 @@ const Index = () => {
               align="left"
               eyebrow="Destinations"
               title="Where will you go next?"
-              description="Six curated escapes loved by our travelers — and ready to book."
+              description="Curated escapes loved by our travelers — and ready to book."
               className="md:max-w-xl"
             />
             <Button asChild variant="outline" className="rounded-full">
@@ -247,7 +273,7 @@ const Index = () => {
           </div>
 
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {packages.slice(0, 6).map((p, i) => (
+            {packages.filter((p) => !featuredSlugs.includes(p.slug)).slice(0, 6).map((p, i) => (
               <PackageCard key={p.slug} pkg={p} index={i} />
             ))}
           </div>
