@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Calendar, MapPin, Users, User, Send, Loader2 } from "lucide-react";
+import { Calendar, MapPin, Users, User, Send, Loader2, CheckCircle2, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { site } from "@/lib/site";
@@ -17,7 +17,7 @@ const buildWhatsAppUrl = (form: { name: string; destination: string; date: strin
   const lines = [
     "Hello DSC Travels & Tours,",
     "",
-    "I'd like to plan a trip:",
+    "I just submitted a booking request:",
     `• Name: ${form.name}`,
     `• Destination: ${form.destination}`,
     `• Date: ${form.date}`,
@@ -27,12 +27,9 @@ const buildWhatsAppUrl = (form: { name: string; destination: string; date: strin
 };
 
 const BookingForm = ({ compact = false, source = "website", defaultDestination = "" }: Props) => {
-  const [form, setForm] = useState({
-    name: "",
-    destination: defaultDestination,
-    date: "",
-    travelers: "2",
-  });
+  const initial = { name: "", destination: defaultDestination, date: "", travelers: "2" };
+  const [form, setForm] = useState(initial);
+  const [confirmation, setConfirmation] = useState<null | typeof initial>(null);
   const { submit, submitting } = useBookingSubmit();
 
   const handle = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
@@ -57,11 +54,66 @@ const BookingForm = ({ compact = false, source = "website", defaultDestination =
     });
     if (!ok) return;
 
-    toast.success("Request received — opening WhatsApp to confirm details.");
-    window.open(buildWhatsAppUrl(form), "_blank", "noopener,noreferrer");
-
-    setForm({ name: "", destination: defaultDestination, date: "", travelers: "2" });
+    toast.success("Booking request received!");
+    setConfirmation(form);
+    setForm({ ...initial, destination: defaultDestination });
   };
+
+  if (confirmation) {
+    return (
+      <motion.div
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        className="rounded-2xl border border-accent/40 bg-card/95 p-6 shadow-card backdrop-blur md:p-8"
+        role="status"
+        aria-live="polite"
+      >
+        <div className="flex items-start gap-4">
+          <div className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-accent-soft text-primary">
+            <CheckCircle2 className="h-6 w-6" />
+          </div>
+          <div className="min-w-0 flex-1">
+            <h3 className="font-display text-xl font-medium text-primary md:text-2xl">
+              Booking request received
+            </h3>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Thanks {confirmation.name.split(" ")[0]} — we've saved your request for{" "}
+              <span className="font-medium text-primary">{confirmation.destination}</span> on{" "}
+              <span className="font-medium text-primary">
+                {new Date(confirmation.date).toLocaleDateString(undefined, {
+                  weekday: "short", day: "numeric", month: "short", year: "numeric",
+                })}
+              </span>{" "}
+              for {confirmation.travelers} {Number(confirmation.travelers) === 1 ? "traveler" : "travelers"}.
+              A travel consultant will reach out within 24 hours.
+            </p>
+
+            <div className="mt-5 flex flex-wrap gap-3">
+              <Button asChild variant="outline" className="rounded-full">
+                <a
+                  href={buildWhatsAppUrl(confirmation)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <MessageCircle className="mr-2 h-4 w-4" />
+                  Chat on WhatsApp
+                </a>
+              </Button>
+              <Button
+                type="button"
+                variant="ghost"
+                className="rounded-full"
+                onClick={() => setConfirmation(null)}
+              >
+                Make another booking
+              </Button>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    );
+  }
 
   return (
     <motion.form
@@ -125,7 +177,7 @@ const BookingForm = ({ compact = false, source = "website", defaultDestination =
         ) : (
           <>
             <Send className="mr-2 h-4 w-4" />
-            Request quote
+            Book Now
           </>
         )}
       </Button>
