@@ -79,7 +79,7 @@ const BookingForm = ({ compact = false, source = "website", defaultDestination =
             <div className="mt-5 flex flex-wrap gap-3">
               <Button asChild variant="outline" className="rounded-full">
                 <a
-                  href={buildWhatsAppUrl(confirmation)}
+                  href={buildWhatsAppUrl(bookingFollowUpMessage(confirmation))}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
