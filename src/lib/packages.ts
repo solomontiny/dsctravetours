@@ -4,8 +4,12 @@ import maldives from "@/assets/dest-maldives.jpg";
 import paris from "@/assets/dest-paris.jpg";
 import capetown from "@/assets/dest-capetown.jpg";
 import zanzibar from "@/assets/dest-zanzibar.jpg";
+import royalCaribbean from "@/assets/pkg-royal-caribbean.jpg";
+import mscEurope from "@/assets/pkg-msc-europe.jpg";
+import disneySingapore from "@/assets/pkg-disney-singapore.jpg";
+import sunSeaCapeTown from "@/assets/pkg-cape-town.jpg";
 
-export type TourCategory = "Beach" | "City" | "Adventure" | "Honeymoon" | "Cultural";
+export type TourCategory = "Beach" | "City" | "Adventure" | "Honeymoon" | "Cultural" | "Cruise";
 
 export type TourPackage = {
   slug: string;
