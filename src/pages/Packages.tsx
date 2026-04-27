@@ -187,6 +187,12 @@ const Packages = () => {
           )}
         </div>
       </section>
+
+      <PackageQuickView
+        pkg={quickViewPkg}
+        open={quickViewOpen}
+        onOpenChange={setQuickViewOpen}
+      />
     </>
   );
 };
