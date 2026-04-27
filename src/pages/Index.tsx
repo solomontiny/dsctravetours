@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
@@ -23,8 +24,9 @@ import {
 import BookingForm from "@/components/BookingForm";
 import SectionHeader from "@/components/SectionHeader";
 import PackageCard from "@/components/PackageCard";
+import PackageQuickView from "@/components/PackageQuickView";
 import Seo from "@/components/Seo";
-import { packages, featuredSlugs } from "@/lib/packages";
+import { packages, featuredSlugs, type TourPackage } from "@/lib/packages";
 import { site } from "@/lib/site";
 
 const services = [
