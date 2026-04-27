@@ -259,7 +259,7 @@ const Index = () => {
             {packages
               .filter((p) => featuredSlugs.includes(p.slug))
               .map((p, i) => (
-                <PackageCard key={p.slug} pkg={p} index={i} />
+                <PackageCard key={p.slug} pkg={p} index={i} onQuickView={openQuickView} />
               ))}
           </div>
         </div>
@@ -283,7 +283,7 @@ const Index = () => {
 
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {packages.filter((p) => !featuredSlugs.includes(p.slug)).slice(0, 6).map((p, i) => (
-              <PackageCard key={p.slug} pkg={p} index={i} />
+              <PackageCard key={p.slug} pkg={p} index={i} onQuickView={openQuickView} />
             ))}
           </div>
         </div>
