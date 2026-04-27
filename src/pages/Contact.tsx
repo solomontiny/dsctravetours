@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Mail, MapPin, Phone, MessageCircle, Send, Loader2 } from "lucide-react";
 import PageHero from "@/components/PageHero";
@@ -10,8 +11,21 @@ import { contactSchema } from "@/lib/validation";
 import { useBookingSubmit } from "@/hooks/use-booking-submit";
 
 const Contact = () => {
+  const [searchParams] = useSearchParams();
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
   const { submit, submitting } = useBookingSubmit();
+
+  useEffect(() => {
+    const destination = searchParams.get("destination");
+    if (destination) {
+      setForm((f) => ({
+        ...f,
+        subject: `Booking request: ${destination}`,
+        message: f.message || `Hi, I'd like to book a trip to ${destination}. Please send me more details.`,
+      }));
+    }
+  }, [searchParams]);
+
 
   const handle = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
