@@ -4,8 +4,12 @@ import maldives from "@/assets/dest-maldives.jpg";
 import paris from "@/assets/dest-paris.jpg";
 import capetown from "@/assets/dest-capetown.jpg";
 import zanzibar from "@/assets/dest-zanzibar.jpg";
+import royalCaribbean from "@/assets/pkg-royal-caribbean.jpg";
+import mscEurope from "@/assets/pkg-msc-europe.jpg";
+import disneySingapore from "@/assets/pkg-disney-singapore.jpg";
+import sunSeaCapeTown from "@/assets/pkg-cape-town.jpg";
 
-export type TourCategory = "Beach" | "City" | "Adventure" | "Honeymoon" | "Cultural";
+export type TourCategory = "Beach" | "City" | "Adventure" | "Honeymoon" | "Cultural" | "Cruise";
 
 export type TourPackage = {
   slug: string;
@@ -24,6 +28,112 @@ export type TourPackage = {
 };
 
 export const packages: TourPackage[] = [
+  {
+    slug: "royal-caribbean-allure",
+    title: "Royal Caribbean — Allure of the Seas",
+    destination: "Eastern Caribbean",
+    country: "Florida → St. Kitts → St. Maarten → Puerto Rico → Bahamas",
+    image: royalCaribbean,
+    price: 2560,
+    duration: "20th Aug → 1st Sept (12 nights)",
+    category: "Cruise",
+    rating: 4.9,
+    summary:
+      "12 nights of full-board cruising across the Eastern Caribbean — pre-cruise stay, sailing, and post-cruise nights all included.",
+    highlights: [
+      "1 night pre-cruise stay with breakfast",
+      "8 nights Eastern Caribbean — full-board meals",
+      "2 nights post-cruise stay with breakfast",
+      "All onboard activities included",
+    ],
+    itinerary: [
+      { day: 1, title: "Pre-cruise (21st – 22nd Aug)", description: "Hotel stay with breakfast, transfer to port." },
+      { day: 2, title: "Cruise (22nd – 30th Aug)", description: "Florida → St. Kitts → St. Maarten → Puerto Rico → Bahamas → Florida — full-board." },
+      { day: 3, title: "Post-cruise (30th Aug – 1st Sept)", description: "2 nights accommodation with breakfast before departure." },
+    ],
+    includes: ["Pre & post-cruise hotels", "8-night cruise (full-board)", "Onboard activities", "Port transfers"],
+  },
+  {
+    slug: "msc-europe-mediterranean",
+    title: "MSC Europe — Mediterranean Cruise",
+    destination: "Mediterranean",
+    country: "France → Spain → Italy → France",
+    image: mscEurope,
+    price: 2100,
+    duration: "24th Aug → 5th Sept (12 nights)",
+    category: "Cruise",
+    rating: 4.8,
+    summary:
+      "Sail the French and Italian Riviera with MSC — full-board cruising plus pre and post-cruise stays. Valid till 1st June 2026.",
+    highlights: [
+      "1 night pre-cruise stay with breakfast",
+      "7 nights Mediterranean — full-board meals",
+      "2 nights post-cruise stay with breakfast",
+      "Onboard entertainment & activities",
+    ],
+    itinerary: [
+      { day: 1, title: "Pre-cruise (25th – 26th Aug)", description: "Hotel stay with breakfast." },
+      { day: 2, title: "Cruise (26th Aug – 2nd Sept)", description: "France → Spain → Italy → France — full-board." },
+      { day: 3, title: "Post-cruise (2nd – 5th Sept)", description: "3 nights to explore before flying home." },
+    ],
+    includes: ["Pre & post-cruise hotels", "7-night cruise (full-board)", "Onboard activities", "Port transfers"],
+  },
+  {
+    slug: "disney-cruise-singapore",
+    title: "Disney Cruise — Singapore",
+    destination: "Singapore",
+    country: "Singapore",
+    image: disneySingapore,
+    price: 2500,
+    duration: "24th Aug → 2nd Sept (9 nights)",
+    category: "Cruise",
+    rating: 5.0,
+    summary:
+      "A magical family cruise from Singapore — family of 4 from USD 6,590 (per person sharing from USD 2,500). Valid till 1st June 2026.",
+    highlights: [
+      "1 night pre-cruise stay with breakfast",
+      "8 nights cruise — full-board meals",
+      "2 nights post-cruise stay with breakfast",
+      "Family rates available — 2 adults + 2 children (under 12) USD 6,590",
+    ],
+    itinerary: [
+      { day: 1, title: "Pre-cruise (24th – 27th Aug)", description: "Singapore hotel stay with breakfast." },
+      { day: 2, title: "Cruise (27th – 31st Aug)", description: "Disney Cruise — full-board with on-ship activities." },
+      { day: 3, title: "Post-cruise (31st Aug – 2nd Sept)", description: "2 nights to relax before departure." },
+    ],
+    includes: ["Pre & post-cruise hotels", "Cruise (full-board)", "Onboard activities", "Family pricing on request"],
+  },
+  {
+    slug: "sun-sea-cape-town",
+    title: "Sun, Sea & Cape Town",
+    destination: "Cape Town",
+    country: "South Africa",
+    image: sunSeaCapeTown,
+    price: 2150, // ~₦3.2M per person sharing
+    duration: "4th – 10th August (6 nights)",
+    category: "Adventure",
+    rating: 4.9,
+    summary:
+      "From Lagos — 6 nights in a 5-star Cape Town hotel with city, winelands & Robben Island tours. ₦2,000,000 down payment to secure (last payment 1st June 2026).",
+    highlights: [
+      "Return economy ticket from Lagos",
+      "6 nights 5-star hotel + daily breakfast",
+      "Cape Town city tour & Robben Island tour",
+      "Half-day Winelands tour (Stellenbosch)",
+      "Aquila Day Safari with breakfast & lunch",
+      "Electronic SA visa available on request",
+    ],
+    itinerary: [
+      { day: 1, title: "Arrival in Cape Town", description: "Airport transfer, check-in to 5★ hotel." },
+      { day: 2, title: "City Tour", description: "Cape Town highlights and orientation." },
+      { day: 3, title: "Robben Island", description: "Guided historic tour." },
+      { day: 4, title: "Winelands", description: "Half-day Stellenbosch tasting." },
+      { day: 5, title: "Aquila Safari", description: "Big-five game drive with breakfast & lunch." },
+      { day: 6, title: "At leisure", description: "Free day to explore." },
+      { day: 7, title: "Departure", description: "Airport transfer for return flight." },
+    ],
+    includes: ["Return flight (Lagos)", "5★ hotel", "Daily breakfast", "All transfers", "City + Winelands + Robben Island + Safari"],
+  },
   {
     slug: "santorini-escape",
     title: "Santorini Sunset Escape",
@@ -194,4 +304,11 @@ export const packages: TourPackage[] = [
   },
 ];
 
-export const categories: TourCategory[] = ["Beach", "City", "Adventure", "Honeymoon", "Cultural"];
+export const categories: TourCategory[] = ["Cruise", "Beach", "City", "Adventure", "Honeymoon", "Cultural"];
+
+export const featuredSlugs = [
+  "royal-caribbean-allure",
+  "msc-europe-mediterranean",
+  "disney-cruise-singapore",
+  "sun-sea-cape-town",
+];
