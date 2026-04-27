@@ -414,6 +414,12 @@ const Index = () => {
           </motion.div>
         </div>
       </section>
+
+      <PackageQuickView
+        pkg={quickViewPkg}
+        open={quickViewOpen}
+        onOpenChange={setQuickViewOpen}
+      />
     </>
   );
 };
