@@ -304,4 +304,11 @@ export const packages: TourPackage[] = [
   },
 ];
 
-export const categories: TourCategory[] = ["Beach", "City", "Adventure", "Honeymoon", "Cultural"];
+export const categories: TourCategory[] = ["Cruise", "Beach", "City", "Adventure", "Honeymoon", "Cultural"];
+
+export const featuredSlugs = [
+  "royal-caribbean-allure",
+  "msc-europe-mediterranean",
+  "disney-cruise-singapore",
+  "sun-sea-cape-town",
+];
