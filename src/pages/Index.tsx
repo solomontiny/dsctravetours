@@ -90,6 +90,13 @@ const faqs = [
 ];
 
 const Index = () => {
+  const [quickViewPkg, setQuickViewPkg] = useState<TourPackage | null>(null);
+  const [quickViewOpen, setQuickViewOpen] = useState(false);
+  const openQuickView = (pkg: TourPackage) => {
+    setQuickViewPkg(pkg);
+    setQuickViewOpen(true);
+  };
+
   const orgJsonLd = {
     "@context": "https://schema.org",
     "@type": "TravelAgency",
