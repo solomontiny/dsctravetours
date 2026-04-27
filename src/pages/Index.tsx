@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
@@ -23,8 +24,9 @@ import {
 import BookingForm from "@/components/BookingForm";
 import SectionHeader from "@/components/SectionHeader";
 import PackageCard from "@/components/PackageCard";
+import PackageQuickView from "@/components/PackageQuickView";
 import Seo from "@/components/Seo";
-import { packages, featuredSlugs } from "@/lib/packages";
+import { packages, featuredSlugs, type TourPackage } from "@/lib/packages";
 import { site } from "@/lib/site";
 
 const services = [
@@ -88,6 +90,13 @@ const faqs = [
 ];
 
 const Index = () => {
+  const [quickViewPkg, setQuickViewPkg] = useState<TourPackage | null>(null);
+  const [quickViewOpen, setQuickViewOpen] = useState(false);
+  const openQuickView = (pkg: TourPackage) => {
+    setQuickViewPkg(pkg);
+    setQuickViewOpen(true);
+  };
+
   const orgJsonLd = {
     "@context": "https://schema.org",
     "@type": "TravelAgency",
@@ -250,7 +259,7 @@ const Index = () => {
             {packages
               .filter((p) => featuredSlugs.includes(p.slug))
               .map((p, i) => (
-                <PackageCard key={p.slug} pkg={p} index={i} />
+                <PackageCard key={p.slug} pkg={p} index={i} onQuickView={openQuickView} />
               ))}
           </div>
         </div>
@@ -274,7 +283,7 @@ const Index = () => {
 
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {packages.filter((p) => !featuredSlugs.includes(p.slug)).slice(0, 6).map((p, i) => (
-              <PackageCard key={p.slug} pkg={p} index={i} />
+              <PackageCard key={p.slug} pkg={p} index={i} onQuickView={openQuickView} />
             ))}
           </div>
         </div>
@@ -405,6 +414,12 @@ const Index = () => {
           </motion.div>
         </div>
       </section>
+
+      <PackageQuickView
+        pkg={quickViewPkg}
+        open={quickViewOpen}
+        onOpenChange={setQuickViewOpen}
+      />
     </>
   );
 };

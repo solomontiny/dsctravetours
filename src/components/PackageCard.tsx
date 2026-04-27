@@ -1,16 +1,22 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Star, MapPin, Clock } from "lucide-react";
+import { Star, MapPin, Clock, Eye } from "lucide-react";
 import type { TourPackage } from "@/lib/packages";
 
-const PackageCard = ({ pkg, index = 0 }: { pkg: TourPackage; index?: number }) => {
+type Props = {
+  pkg: TourPackage;
+  index?: number;
+  onQuickView?: (pkg: TourPackage) => void;
+};
+
+const PackageCard = ({ pkg, index = 0, onQuickView }: Props) => {
   return (
     <motion.article
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.5, delay: index * 0.06, ease: [0.22, 1, 0.36, 1] }}
-      className="group overflow-hidden rounded-2xl border border-border/70 bg-card shadow-soft transition-all duration-500 hover:-translate-y-1 hover:shadow-card"
+      className="group relative overflow-hidden rounded-2xl border border-border/70 bg-card shadow-soft transition-all duration-500 hover:-translate-y-1 hover:shadow-card"
     >
       <Link to={`/packages/${pkg.slug}`} className="block">
         <div className="relative aspect-[4/3] overflow-hidden">
@@ -58,6 +64,22 @@ const PackageCard = ({ pkg, index = 0 }: { pkg: TourPackage; index?: number }) =
           </div>
         </div>
       </Link>
+
+      {onQuickView && (
+        <button
+          type="button"
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            onQuickView(pkg);
+          }}
+          aria-label={`Quick view ${pkg.title}`}
+          className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 rounded-full bg-background/95 px-3 py-1.5 text-xs font-medium text-primary opacity-0 shadow-soft backdrop-blur transition-all duration-300 hover:bg-background group-hover:opacity-100 group-focus-within:opacity-100 sm:bottom-4 sm:right-4 max-sm:opacity-100"
+        >
+          <Eye className="h-3.5 w-3.5 text-accent" />
+          Quick view
+        </button>
+      )}
     </motion.article>
   );
 };

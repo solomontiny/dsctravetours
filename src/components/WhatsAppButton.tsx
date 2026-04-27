@@ -1,10 +1,8 @@
 import { motion } from "framer-motion";
-import { site } from "@/lib/site";
+import { buildWhatsAppUrl, generalWhatsAppMessage } from "@/lib/whatsapp";
 
 const WhatsAppButton = () => {
-  const href = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(
-    "Hello DSC Travels & Tours, I'd like to plan a trip."
-  )}`;
+  const href = buildWhatsAppUrl(generalWhatsAppMessage());
 
   return (
     <motion.a

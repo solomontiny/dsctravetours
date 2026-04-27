@@ -3,8 +3,9 @@ import { motion } from "framer-motion";
 import { Search, SlidersHorizontal, X } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import PackageCard from "@/components/PackageCard";
+import PackageQuickView from "@/components/PackageQuickView";
 import Seo from "@/components/Seo";
-import { categories, packages, type TourCategory } from "@/lib/packages";
+import { categories, packages, type TourCategory, type TourPackage } from "@/lib/packages";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
@@ -26,6 +27,12 @@ const Packages = () => {
   const [query, setQuery] = useState("");
   const [maxBudget, setMaxBudget] = useState<number>(MAX_PRICE);
   const [sort, setSort] = useState<SortKey>("recommended");
+  const [quickViewPkg, setQuickViewPkg] = useState<TourPackage | null>(null);
+  const [quickViewOpen, setQuickViewOpen] = useState(false);
+  const openQuickView = (pkg: TourPackage) => {
+    setQuickViewPkg(pkg);
+    setQuickViewOpen(true);
+  };
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -166,7 +173,7 @@ const Packages = () => {
 
           <motion.div layout className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {filtered.map((p, i) => (
-              <PackageCard key={p.slug} pkg={p} index={i} />
+              <PackageCard key={p.slug} pkg={p} index={i} onQuickView={openQuickView} />
             ))}
           </motion.div>
 
@@ -180,6 +187,12 @@ const Packages = () => {
           )}
         </div>
       </section>
+
+      <PackageQuickView
+        pkg={quickViewPkg}
+        open={quickViewOpen}
+        onOpenChange={setQuickViewOpen}
+      />
     </>
   );
 };

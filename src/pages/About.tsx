@@ -5,7 +5,7 @@ import PageHero from "@/components/PageHero";
 import SectionHeader from "@/components/SectionHeader";
 import Seo from "@/components/Seo";
 import { Button } from "@/components/ui/button";
-import { site } from "@/lib/site";
+import { buildWhatsAppUrl, destinationWhatsAppMessage } from "@/lib/whatsapp";
 
 import seychelles from "@/assets/dest-maldives.jpg";
 import maldives from "@/assets/dest-maldives.jpg";
@@ -81,10 +81,8 @@ const destinations: Destination[] = [
   },
 ];
 
-const buildWaUrl = (destination: string) => {
-  const text = `Hello DSC Travel & Tours, I'm interested in booking a trip to ${destination}. Please provide more details.`;
-  return `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(text)}`;
-};
+const buildWaUrl = (destination: string) =>
+  buildWhatsAppUrl(destinationWhatsAppMessage(destination));
 
 const About = () => (
   <>
