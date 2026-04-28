@@ -39,7 +39,7 @@ export const packageWhatsAppMessage = (pkg: {
     `I'd like to book the "${pkg.title}" package.`,
     `• Destination: ${pkg.destination}, ${pkg.country}`,
     `• Duration: ${pkg.duration}`,
-    `• Indicative price: $${pkg.price.toLocaleString()} / person`,
+    `• Indicative price: ₦${pkg.price.toLocaleString("en-NG")} / person`,
     "",
     "Please confirm availability and send me a full quote.",
   ].join("\n");

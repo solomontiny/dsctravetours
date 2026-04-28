@@ -6,6 +6,7 @@ import BookingForm from "@/components/BookingForm";
 import Seo from "@/components/Seo";
 import { Button } from "@/components/ui/button";
 import { packages } from "@/lib/packages";
+import { formatNGN } from "@/lib/currency";
 
 const TourDetails = () => {
   const { slug } = useParams();
@@ -100,7 +101,7 @@ const TourDetails = () => {
             <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-primary-foreground/85">
               <span className="inline-flex items-center gap-1.5"><MapPin className="h-4 w-4" /> {pkg.destination}, {pkg.country}</span>
               <span className="inline-flex items-center gap-1.5"><Clock className="h-4 w-4" /> {pkg.duration}</span>
-              <span className="inline-flex items-center gap-1.5">From <strong className="font-display text-base text-primary-foreground">${pkg.price.toLocaleString()}</strong> / person</span>
+              <span className="inline-flex items-center gap-1.5">From <strong className="font-display text-base text-primary-foreground">{formatNGN(pkg.price)}</strong> / person</span>
             </div>
           </motion.div>
         </div>
@@ -197,7 +198,7 @@ const TourDetails = () => {
                 <div>
                   <div className="text-xs uppercase tracking-wider text-muted-foreground">From</div>
                   <div className="font-display text-3xl font-semibold text-primary">
-                    ${pkg.price.toLocaleString()}
+                    {formatNGN(pkg.price)}
                     <span className="ml-1 text-sm font-normal text-muted-foreground">/ person</span>
                   </div>
                 </div>

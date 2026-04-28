@@ -10,6 +10,7 @@ import {
 import { Button } from "@/components/ui/button";
 import BookingForm from "@/components/BookingForm";
 import { buildWhatsAppUrl, packageWhatsAppMessage } from "@/lib/whatsapp";
+import { formatNGN } from "@/lib/currency";
 import type { TourPackage } from "@/lib/packages";
 
 type Props = {
@@ -68,7 +69,7 @@ const PackageQuickView = ({ pkg, open, onOpenChange }: Props) => {
             <div>
               <div className="text-[10px] uppercase tracking-wider text-muted-foreground">From</div>
               <div className="font-display text-2xl font-semibold text-primary">
-                ${pkg.price.toLocaleString()}
+                {formatNGN(pkg.price)}
                 <span className="ml-1 text-xs font-normal text-muted-foreground">/ person</span>
               </div>
             </div>
