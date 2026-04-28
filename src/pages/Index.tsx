@@ -25,17 +25,18 @@ import BookingForm from "@/components/BookingForm";
 import SectionHeader from "@/components/SectionHeader";
 import PackageCard from "@/components/PackageCard";
 import PackageQuickView from "@/components/PackageQuickView";
+import ServiceQuickView, { type ServiceDetail } from "@/components/ServiceQuickView";
 import Seo from "@/components/Seo";
 import { packages, featuredSlugs, type TourPackage } from "@/lib/packages";
 import { site } from "@/lib/site";
 
-const services = [
-  { icon: Plane, title: "Flight Booking", text: "Domestic and international flights with priority fares." },
-  { icon: FileCheck2, title: "Visa Processing", text: "End-to-end visa support with high success rate." },
-  { icon: Hotel, title: "Hotel Reservation", text: "Hand-picked stays — boutique to five-star." },
-  { icon: ShieldCheck, title: "Travel Insurance", text: "Peace of mind for every trip, every traveler." },
-  { icon: Car, title: "Airport Pickup", text: "Discreet, on-time chauffeur service door-to-door." },
-  { icon: Briefcase, title: "Protocol Service", text: "VIP handling and fast-track at major airports." },
+const services: ServiceDetail[] = [
+  { icon: Plane, title: "Flight Booking", text: "Domestic and international flights with priority fares.", bullets: ["Economy to business class", "Best-fare GDS search", "24/7 reschedule help"] },
+  { icon: FileCheck2, title: "Visa Processing", text: "End-to-end visa support with high success rate.", bullets: ["Schengen, UK, US, Canada, UAE", "Document review", "98% approval rate"] },
+  { icon: Hotel, title: "Hotel Reservation", text: "Hand-picked stays — boutique to five-star.", bullets: ["Negotiated chain rates", "Boutique specialists", "Free cancellation options"] },
+  { icon: ShieldCheck, title: "Travel Insurance", text: "Peace of mind for every trip, every traveler.", bullets: ["Medical & evacuation", "Baggage & delay cover", "Schengen-compliant"] },
+  { icon: Car, title: "Airport Pickup", text: "Discreet, on-time chauffeur service door-to-door.", bullets: ["Meet & greet", "Executive sedans/SUVs", "Flight tracking"] },
+  { icon: Briefcase, title: "Protocol Service", text: "VIP handling and fast-track at major airports.", bullets: ["Lounge & fast-track", "Baggage assistance", "Lagos, Abuja, London, Dubai"] },
 ];
 
 const trustStats = [
@@ -95,6 +96,13 @@ const Index = () => {
   const openQuickView = (pkg: TourPackage) => {
     setQuickViewPkg(pkg);
     setQuickViewOpen(true);
+  };
+
+  const [activeService, setActiveService] = useState<ServiceDetail | null>(null);
+  const [serviceOpen, setServiceOpen] = useState(false);
+  const openService = (s: ServiceDetail) => {
+    setActiveService(s);
+    setServiceOpen(true);
   };
 
   const orgJsonLd = {
@@ -214,20 +222,25 @@ const Index = () => {
 
           <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-border/70 bg-border/70 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((s, i) => (
-              <motion.div
+              <motion.button
+                type="button"
                 key={s.title}
+                onClick={() => openService(s)}
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: i * 0.05 }}
-                className="group flex flex-col gap-4 bg-card p-8 transition-colors hover:bg-accent-soft/40"
+                className="group flex flex-col gap-4 bg-card p-8 text-left transition-colors hover:bg-accent-soft/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
               >
                 <div className="grid h-12 w-12 place-items-center rounded-xl bg-accent-soft text-primary transition-transform group-hover:-translate-y-0.5">
                   <s.icon className="h-5 w-5" />
                 </div>
                 <h3 className="font-display text-xl font-medium text-primary">{s.title}</h3>
                 <p className="text-sm leading-relaxed text-muted-foreground">{s.text}</p>
-              </motion.div>
+                <span className="mt-1 inline-flex items-center gap-1.5 text-xs font-medium text-accent opacity-80">
+                  Learn more <ArrowRight className="h-3 w-3" />
+                </span>
+              </motion.button>
             ))}
           </div>
 
@@ -419,6 +432,11 @@ const Index = () => {
         pkg={quickViewPkg}
         open={quickViewOpen}
         onOpenChange={setQuickViewOpen}
+      />
+      <ServiceQuickView
+        service={activeService}
+        open={serviceOpen}
+        onOpenChange={setServiceOpen}
       />
     </>
   );
