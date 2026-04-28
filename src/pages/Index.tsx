@@ -98,6 +98,13 @@ const Index = () => {
     setQuickViewOpen(true);
   };
 
+  const [activeService, setActiveService] = useState<ServiceDetail | null>(null);
+  const [serviceOpen, setServiceOpen] = useState(false);
+  const openService = (s: ServiceDetail) => {
+    setActiveService(s);
+    setServiceOpen(true);
+  };
+
   const orgJsonLd = {
     "@context": "https://schema.org",
     "@type": "TravelAgency",
@@ -215,20 +222,25 @@ const Index = () => {
 
           <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-border/70 bg-border/70 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((s, i) => (
-              <motion.div
+              <motion.button
+                type="button"
                 key={s.title}
+                onClick={() => openService(s)}
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: i * 0.05 }}
-                className="group flex flex-col gap-4 bg-card p-8 transition-colors hover:bg-accent-soft/40"
+                className="group flex flex-col gap-4 bg-card p-8 text-left transition-colors hover:bg-accent-soft/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
               >
                 <div className="grid h-12 w-12 place-items-center rounded-xl bg-accent-soft text-primary transition-transform group-hover:-translate-y-0.5">
                   <s.icon className="h-5 w-5" />
                 </div>
                 <h3 className="font-display text-xl font-medium text-primary">{s.title}</h3>
                 <p className="text-sm leading-relaxed text-muted-foreground">{s.text}</p>
-              </motion.div>
+                <span className="mt-1 inline-flex items-center gap-1.5 text-xs font-medium text-accent opacity-80">
+                  Learn more <ArrowRight className="h-3 w-3" />
+                </span>
+              </motion.button>
             ))}
           </div>
 
