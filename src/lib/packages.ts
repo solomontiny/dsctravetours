@@ -17,7 +17,7 @@ export type TourPackage = {
   destination: string;
   country: string;
   image: string;
-  price: number;          // USD per person, indicative
+  price: number;          // NGN per person, indicative (base currency)
   duration: string;       // "5 days / 4 nights"
   category: TourCategory;
   rating: number;
@@ -34,7 +34,7 @@ export const packages: TourPackage[] = [
     destination: "Eastern Caribbean",
     country: "Florida → St. Kitts → St. Maarten → Puerto Rico → Bahamas",
     image: royalCaribbean,
-    price: 2560,
+    price: 4096000,
     duration: "20th Aug → 1st Sept (12 nights)",
     category: "Cruise",
     rating: 4.9,
@@ -59,7 +59,7 @@ export const packages: TourPackage[] = [
     destination: "Mediterranean",
     country: "France → Spain → Italy → France",
     image: mscEurope,
-    price: 2100,
+    price: 3360000,
     duration: "24th Aug → 5th Sept (12 nights)",
     category: "Cruise",
     rating: 4.8,
@@ -84,7 +84,7 @@ export const packages: TourPackage[] = [
     destination: "Singapore",
     country: "Singapore",
     image: disneySingapore,
-    price: 2500,
+    price: 4000000,
     duration: "24th Aug → 2nd Sept (9 nights)",
     category: "Cruise",
     rating: 5.0,
@@ -109,7 +109,7 @@ export const packages: TourPackage[] = [
     destination: "Cape Town",
     country: "South Africa",
     image: sunSeaCapeTown,
-    price: 2150, // ~₦3.2M per person sharing
+    price: 3440000, // per person sharing
     duration: "4th – 10th August (6 nights)",
     category: "Adventure",
     rating: 4.9,
@@ -140,7 +140,7 @@ export const packages: TourPackage[] = [
     destination: "Santorini",
     country: "Greece",
     image: santorini,
-    price: 2450,
+    price: 3920000,
     duration: "6 days / 5 nights",
     category: "Honeymoon",
     rating: 4.9,
@@ -168,7 +168,7 @@ export const packages: TourPackage[] = [
     destination: "Dubai",
     country: "UAE",
     image: dubai,
-    price: 1890,
+    price: 3024000,
     duration: "5 days / 4 nights",
     category: "City",
     rating: 4.8,
@@ -195,7 +195,7 @@ export const packages: TourPackage[] = [
     destination: "Malé Atoll",
     country: "Maldives",
     image: maldives,
-    price: 3950,
+    price: 6320000,
     duration: "7 days / 6 nights",
     category: "Beach",
     rating: 5.0,
