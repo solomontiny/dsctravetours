@@ -1,4 +1,5 @@
 import { site } from "@/lib/site";
+import { formatNGN } from "@/lib/currency";
 
 /**
  * Build a wa.me URL with a pre-filled message body.
@@ -39,7 +40,7 @@ export const packageWhatsAppMessage = (pkg: {
     `I'd like to book the "${pkg.title}" package.`,
     `• Destination: ${pkg.destination}, ${pkg.country}`,
     `• Duration: ${pkg.duration}`,
-    `• Indicative price: ₦${pkg.price.toLocaleString("en-NG")} / person`,
+    `• Indicative price: ${formatNGN(pkg.price)} / person`,
     "",
     "Please confirm availability and send me a full quote.",
   ].join("\n");
