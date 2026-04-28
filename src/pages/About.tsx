@@ -325,7 +325,14 @@ const About = () => {
         </motion.div>
       </div>
     </section>
+
+    <DestinationQuickView
+      destination={quickDest}
+      open={quickOpen}
+      onOpenChange={setQuickOpen}
+    />
   </>
-);
+  );
+};
 
 export default About;
