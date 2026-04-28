@@ -237,10 +237,12 @@ const About = () => {
               </div>
               <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">{d.body}</p>
               <div className="mt-2 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                <Button asChild className="w-full rounded-full sm:w-auto">
-                  <Link to={`/contact?destination=${encodeURIComponent(d.name)}`}>
-                    Book {d.name} <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
+                <Button
+                  type="button"
+                  onClick={() => openQuick(d)}
+                  className="w-full rounded-full sm:w-auto"
+                >
+                  Book {d.name} <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
                 <Button asChild variant="outline" className="w-full rounded-full sm:w-auto">
                   <a
