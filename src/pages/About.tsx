@@ -86,7 +86,15 @@ const destinations: Destination[] = [
 const buildWaUrl = (destination: string) =>
   buildWhatsAppUrl(destinationWhatsAppMessage(destination));
 
-const About = () => (
+const About = () => {
+  const [quickDest, setQuickDest] = useState<QuickViewDestination | null>(null);
+  const [quickOpen, setQuickOpen] = useState(false);
+  const openQuick = (d: QuickViewDestination) => {
+    setQuickDest(d);
+    setQuickOpen(true);
+  };
+
+  return (
   <>
     <Seo
       title="About — Travel Insurance & Visa-Free Destinations"
