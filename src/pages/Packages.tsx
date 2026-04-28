@@ -6,6 +6,7 @@ import PackageCard from "@/components/PackageCard";
 import PackageQuickView from "@/components/PackageQuickView";
 import Seo from "@/components/Seo";
 import { categories, packages, type TourCategory, type TourPackage } from "@/lib/packages";
+import { formatNGN } from "@/lib/currency";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
@@ -144,14 +145,14 @@ const Packages = () => {
               type="range"
               min={MIN_PRICE}
               max={MAX_PRICE}
-              step={50}
+              step={100000}
               value={maxBudget}
               onChange={(e) => setMaxBudget(Number(e.target.value))}
               aria-label="Maximum budget per person"
               className="h-1.5 flex-1 cursor-pointer appearance-none rounded-full bg-border accent-accent"
             />
             <div className="font-display text-base font-semibold text-primary tabular-nums">
-              up to ${maxBudget.toLocaleString()}
+              up to {formatNGN(maxBudget)}
             </div>
             {hasActiveFilters && (
               <Button
