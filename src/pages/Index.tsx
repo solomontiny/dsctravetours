@@ -433,6 +433,11 @@ const Index = () => {
         open={quickViewOpen}
         onOpenChange={setQuickViewOpen}
       />
+      <ServiceQuickView
+        service={activeService}
+        open={serviceOpen}
+        onOpenChange={setServiceOpen}
+      />
     </>
   );
 };
