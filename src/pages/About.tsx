@@ -1,10 +1,12 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ShieldCheck, Plane, Globe2, MessageCircle, ArrowRight, Check } from "lucide-react";
 import PageHero from "@/components/PageHero";
-import SectionHeader from "@/components/SectionHeader";
+
 import Seo from "@/components/Seo";
 import { Button } from "@/components/ui/button";
+import DestinationQuickView, { type QuickViewDestination } from "@/components/DestinationQuickView";
 import { buildWhatsAppUrl, destinationWhatsAppMessage } from "@/lib/whatsapp";
 
 import seychelles from "@/assets/dest-maldives.jpg";
@@ -84,7 +86,15 @@ const destinations: Destination[] = [
 const buildWaUrl = (destination: string) =>
   buildWhatsAppUrl(destinationWhatsAppMessage(destination));
 
-const About = () => (
+const About = () => {
+  const [quickDest, setQuickDest] = useState<QuickViewDestination | null>(null);
+  const [quickOpen, setQuickOpen] = useState(false);
+  const openQuick = (d: QuickViewDestination) => {
+    setQuickDest(d);
+    setQuickOpen(true);
+  };
+
+  return (
   <>
     <Seo
       title="About — Travel Insurance & Visa-Free Destinations"
@@ -227,10 +237,12 @@ const About = () => (
               </div>
               <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">{d.body}</p>
               <div className="mt-2 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                <Button asChild className="w-full rounded-full sm:w-auto">
-                  <Link to={`/contact?destination=${encodeURIComponent(d.name)}`}>
-                    Book {d.name} <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
+                <Button
+                  type="button"
+                  onClick={() => openQuick(d)}
+                  className="w-full rounded-full sm:w-auto"
+                >
+                  Book {d.name} <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
                 <Button asChild variant="outline" className="w-full rounded-full sm:w-auto">
                   <a
@@ -313,7 +325,14 @@ const About = () => (
         </motion.div>
       </div>
     </section>
+
+    <DestinationQuickView
+      destination={quickDest}
+      open={quickOpen}
+      onOpenChange={setQuickOpen}
+    />
   </>
-);
+  );
+};
 
 export default About;
