@@ -25,17 +25,18 @@ import BookingForm from "@/components/BookingForm";
 import SectionHeader from "@/components/SectionHeader";
 import PackageCard from "@/components/PackageCard";
 import PackageQuickView from "@/components/PackageQuickView";
+import ServiceQuickView, { type ServiceDetail } from "@/components/ServiceQuickView";
 import Seo from "@/components/Seo";
 import { packages, featuredSlugs, type TourPackage } from "@/lib/packages";
 import { site } from "@/lib/site";
 
-const services = [
-  { icon: Plane, title: "Flight Booking", text: "Domestic and international flights with priority fares." },
-  { icon: FileCheck2, title: "Visa Processing", text: "End-to-end visa support with high success rate." },
-  { icon: Hotel, title: "Hotel Reservation", text: "Hand-picked stays — boutique to five-star." },
-  { icon: ShieldCheck, title: "Travel Insurance", text: "Peace of mind for every trip, every traveler." },
-  { icon: Car, title: "Airport Pickup", text: "Discreet, on-time chauffeur service door-to-door." },
-  { icon: Briefcase, title: "Protocol Service", text: "VIP handling and fast-track at major airports." },
+const services: ServiceDetail[] = [
+  { icon: Plane, title: "Flight Booking", text: "Domestic and international flights with priority fares.", bullets: ["Economy to business class", "Best-fare GDS search", "24/7 reschedule help"] },
+  { icon: FileCheck2, title: "Visa Processing", text: "End-to-end visa support with high success rate.", bullets: ["Schengen, UK, US, Canada, UAE", "Document review", "98% approval rate"] },
+  { icon: Hotel, title: "Hotel Reservation", text: "Hand-picked stays — boutique to five-star.", bullets: ["Negotiated chain rates", "Boutique specialists", "Free cancellation options"] },
+  { icon: ShieldCheck, title: "Travel Insurance", text: "Peace of mind for every trip, every traveler.", bullets: ["Medical & evacuation", "Baggage & delay cover", "Schengen-compliant"] },
+  { icon: Car, title: "Airport Pickup", text: "Discreet, on-time chauffeur service door-to-door.", bullets: ["Meet & greet", "Executive sedans/SUVs", "Flight tracking"] },
+  { icon: Briefcase, title: "Protocol Service", text: "VIP handling and fast-track at major airports.", bullets: ["Lounge & fast-track", "Baggage assistance", "Lagos, Abuja, London, Dubai"] },
 ];
 
 const trustStats = [
