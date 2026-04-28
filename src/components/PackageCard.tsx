@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Star, MapPin, Clock, Eye } from "lucide-react";
 import type { TourPackage } from "@/lib/packages";
+import { formatNGN } from "@/lib/currency";
 
 type Props = {
   pkg: TourPackage;
@@ -59,7 +60,7 @@ const PackageCard = ({ pkg, index = 0, onQuickView }: Props) => {
             <div className="text-right">
               <div className="text-[10px] uppercase tracking-wider text-muted-foreground">From</div>
               <div className="font-display text-base font-semibold text-primary sm:text-lg">
-                ${pkg.price.toLocaleString()}
+                {formatNGN(pkg.price)}
               </div>
             </div>
           </div>
