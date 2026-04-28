@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ShieldCheck, Plane, Globe2, MessageCircle, ArrowRight, Check } from "lucide-react";
@@ -5,6 +6,7 @@ import PageHero from "@/components/PageHero";
 import SectionHeader from "@/components/SectionHeader";
 import Seo from "@/components/Seo";
 import { Button } from "@/components/ui/button";
+import DestinationQuickView, { type QuickViewDestination } from "@/components/DestinationQuickView";
 import { buildWhatsAppUrl, destinationWhatsAppMessage } from "@/lib/whatsapp";
 
 import seychelles from "@/assets/dest-maldives.jpg";
