@@ -59,7 +59,28 @@ const Navbar = () => {
           ))}
         </nav>
 
-        <div className="hidden md:block">
+        <div className="hidden items-center gap-2 md:flex">
+          {user ? (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <button className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-sm font-semibold text-primary-foreground shadow-soft" aria-label="Account menu">
+                  {initial}
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-56">
+                <DropdownMenuLabel className="truncate">{profile?.display_name || user.email}</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem asChild><Link to="/dashboard"><LayoutDashboard className="mr-2 h-4 w-4" />My dashboard</Link></DropdownMenuItem>
+                <DropdownMenuItem asChild><Link to="/contact">Book a trip</Link></DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem onClick={signOut}><LogOut className="mr-2 h-4 w-4" />Sign out</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          ) : (
+            <Button asChild variant="ghost" size="sm" className="rounded-full">
+              <Link to="/auth"><UserIcon className="mr-1 h-4 w-4" />Sign in</Link>
+            </Button>
+          )}
           <Button asChild size="sm" className="rounded-full px-5">
             <Link to="/contact">Book a trip</Link>
           </Button>
@@ -104,6 +125,14 @@ const Navbar = () => {
               <Button asChild className="mt-4 rounded-full">
                 <Link to="/contact">Book a trip</Link>
               </Button>
+              {user ? (
+                <>
+                  <Button asChild variant="outline" className="mt-2 rounded-full"><Link to="/dashboard">My dashboard</Link></Button>
+                  <Button onClick={signOut} variant="ghost" className="mt-1 rounded-full">Sign out</Button>
+                </>
+              ) : (
+                <Button asChild variant="outline" className="mt-2 rounded-full"><Link to="/auth">Sign in / Create account</Link></Button>
+              )}
             </div>
           </motion.div>
         )}
