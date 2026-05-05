@@ -22,11 +22,14 @@ export type Database = {
           id: string
           message: string | null
           name: string
+          package_slug: string | null
           phone: string | null
+          price_ngn: number | null
           source: string
           status: string
           travel_date: string | null
           travelers: number
+          user_id: string | null
         }
         Insert: {
           created_at?: string
@@ -35,11 +38,14 @@ export type Database = {
           id?: string
           message?: string | null
           name: string
+          package_slug?: string | null
           phone?: string | null
+          price_ngn?: number | null
           source?: string
           status?: string
           travel_date?: string | null
           travelers?: number
+          user_id?: string | null
         }
         Update: {
           created_at?: string
@@ -48,11 +54,77 @@ export type Database = {
           id?: string
           message?: string | null
           name?: string
+          package_slug?: string | null
           phone?: string | null
+          price_ngn?: number | null
           source?: string
           status?: string
           travel_date?: string | null
           travelers?: number
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          created_at: string
+          display_name: string | null
+          id: string
+          phone: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string
+          display_name?: string | null
+          id?: string
+          phone?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string
+          display_name?: string | null
+          id?: string
+          phone?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      reviews: {
+        Row: {
+          body: string | null
+          created_at: string
+          id: string
+          package_slug: string
+          rating: number
+          title: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          body?: string | null
+          created_at?: string
+          id?: string
+          package_slug: string
+          rating: number
+          title?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          body?: string | null
+          created_at?: string
+          id?: string
+          package_slug?: string
+          rating?: number
+          title?: string | null
+          updated_at?: string
+          user_id?: string
         }
         Relationships: []
       }
