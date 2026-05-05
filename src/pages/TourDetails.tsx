@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { ArrowLeft, Check, Clock, MapPin, Star, ShieldCheck, Calendar, Users } from "lucide-react";
 import PackageCard from "@/components/PackageCard";
 import BookingForm from "@/components/BookingForm";
+import ReviewsSection from "@/components/ReviewsSection";
 import Seo from "@/components/Seo";
 import { Button } from "@/components/ui/button";
 import { packages } from "@/lib/packages";
@@ -208,7 +209,7 @@ const TourDetails = () => {
               </div>
               <p className="mt-2 text-sm text-muted-foreground">{pkg.duration} · {pkg.destination}</p>
               <div className="mt-5">
-                <BookingForm compact source="tour-details" defaultDestination={`${pkg.destination}, ${pkg.country}`} />
+                <BookingForm compact source="tour-details" defaultDestination={`${pkg.destination}, ${pkg.country}`} packageSlug={pkg.slug} priceNgn={pkg.price} />
               </div>
               <p className="mt-4 flex items-center gap-1.5 text-[11px] text-muted-foreground">
                 <ShieldCheck className="h-3 w-3 text-accent" />
@@ -218,6 +219,8 @@ const TourDetails = () => {
           </aside>
         </div>
       </section>
+
+      <ReviewsSection packageSlug={pkg.slug} />
 
       <section className="bg-secondary/40 py-20">
         <div className="container-wide">
