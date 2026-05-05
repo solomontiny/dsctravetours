@@ -15,6 +15,8 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const { pathname } = useLocation();
+  const { user, profile, signOut } = useAuth();
+  const initial = (profile?.display_name || user?.email || "?").slice(0, 1).toUpperCase();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
