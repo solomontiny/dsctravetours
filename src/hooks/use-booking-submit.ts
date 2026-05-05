@@ -36,6 +36,9 @@ type Payload = {
   email?: string | null;
   message?: string | null;
   source: Source;
+  user_id?: string;
+  package_slug?: string;
+  price_ngn?: number;
 };
 
 export const useBookingSubmit = () => {
@@ -58,6 +61,9 @@ export const useBookingSubmit = () => {
         message: payload.message ?? null,
         source: payload.source,
         status: "new",
+        user_id: payload.user_id ?? null,
+        package_slug: payload.package_slug ?? null,
+        price_ngn: payload.price_ngn ?? null,
       });
 
       if (error) {
