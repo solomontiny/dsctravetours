@@ -6,14 +6,18 @@ import { toast } from "sonner";
 import { bookingSchema } from "@/lib/validation";
 import { useBookingSubmit } from "@/hooks/use-booking-submit";
 import { buildWhatsAppUrl, bookingFollowUpMessage } from "@/lib/whatsapp";
+import { useAuth } from "@/contexts/AuthContext";
 
 type Props = {
   compact?: boolean;
   source?: "website" | "tour-details" | "contact";
   defaultDestination?: string;
+  packageSlug?: string;
+  priceNgn?: number;
 };
 
-const BookingForm = ({ compact = false, source = "website", defaultDestination = "" }: Props) => {
+const BookingForm = ({ compact = false, source = "website", defaultDestination = "", packageSlug, priceNgn }: Props) => {
+  const { user, profile } = useAuth();
   const initial = { name: "", destination: defaultDestination, date: "", travelers: "2" };
   const [form, setForm] = useState(initial);
   const [confirmation, setConfirmation] = useState<null | typeof initial>(null);
@@ -38,6 +42,10 @@ const BookingForm = ({ compact = false, source = "website", defaultDestination =
       travel_date: data.date,
       travelers: data.travelers,
       source,
+      user_id: user?.id,
+      email: user?.email,
+      package_slug: packageSlug,
+      price_ngn: priceNgn,
     });
     if (!ok) return;
 
@@ -116,7 +124,7 @@ const BookingForm = ({ compact = false, source = "website", defaultDestination =
       <Field icon={<User className="h-4 w-4" />} label="Your name">
         <input
           name="name"
-          value={form.name}
+          value={form.name || profile?.display_name || ""}
           onChange={handle}
           placeholder="Ada Okafor"
           className="field-input"
