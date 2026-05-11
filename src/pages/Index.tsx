@@ -26,6 +26,7 @@ import SectionHeader from "@/components/SectionHeader";
 import PackageCard from "@/components/PackageCard";
 import PackageQuickView from "@/components/PackageQuickView";
 import ServiceQuickView, { type ServiceDetail } from "@/components/ServiceQuickView";
+import TestimonialsCarousel from "@/components/TestimonialsCarousel";
 import Seo from "@/components/Seo";
 import { packages, featuredSlugs, type TourPackage } from "@/lib/packages";
 import { site } from "@/lib/site";
