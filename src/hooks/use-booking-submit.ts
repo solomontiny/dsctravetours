@@ -59,6 +59,7 @@ export const useBookingSubmit = () => {
         travel_date: payload.travel_date ?? null,
         travelers: payload.travelers ?? 1,
         email: payload.email ?? null,
+        phone: payload.phone ?? null,
         message: payload.message ?? null,
         source: payload.source,
         status: "new",
