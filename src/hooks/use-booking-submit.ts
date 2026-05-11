@@ -34,6 +34,7 @@ type Payload = {
   travel_date?: string | null;
   travelers?: number;
   email?: string | null;
+  phone?: string | null;
   message?: string | null;
   source: Source;
   user_id?: string;
