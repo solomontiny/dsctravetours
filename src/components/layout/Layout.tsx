@@ -2,6 +2,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import MobileBottomNav from "./MobileBottomNav";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
 const Layout = () => {
@@ -15,6 +16,8 @@ const Layout = () => {
         <Outlet />
       </main>
       <Footer />
+      <div className="h-16 md:hidden" aria-hidden="true" />
+      <MobileBottomNav />
       <WhatsAppButton />
     </div>
   );
