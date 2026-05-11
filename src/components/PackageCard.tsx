@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Star, MapPin, Clock, Eye } from "lucide-react";
+import { Star, MapPin, Clock, Eye, Heart } from "lucide-react";
 import type { TourPackage } from "@/lib/packages";
 import { formatNGN } from "@/lib/currency";
+import { useFavorites } from "@/hooks/use-favorites";
+import { cn } from "@/lib/utils";
 
 type Props = {
   pkg: TourPackage;
