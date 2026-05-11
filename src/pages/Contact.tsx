@@ -7,48 +7,7 @@ import { site } from "@/lib/site";
 
 const Contact = () => {
   const [searchParams] = useSearchParams();
-  const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
-  const { submit, submitting } = useBookingSubmit();
-
-  useEffect(() => {
-    const destination = searchParams.get("destination");
-    if (destination) {
-      setForm((f) => ({
-        ...f,
-        subject: `Booking request: ${destination}`,
-        message: f.message || `Hi, I'd like to book a trip to ${destination}. Please send me more details.`,
-      }));
-    }
-  }, [searchParams]);
-
-
-  const handle = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
-    setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
-
-  const onSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    const parsed = contactSchema.safeParse(form);
-    if (!parsed.success) {
-      toast.error(parsed.error.issues[0]?.message ?? "Please check your details.");
-      return;
-    }
-    const data = parsed.data;
-
-    const ok = await submit({
-      name: data.name,
-      email: data.email,
-      destination: data.subject || "General inquiry",
-      message: data.message,
-      travelers: 1,
-      source: "contact",
-    });
-    if (!ok) return;
-
-    toast.success("Message received. We'll be in touch within 24 hours.");
-    setForm({ name: "", email: "", subject: "", message: "" });
-  };
-
+  const defaultDestination = searchParams.get("destination") ?? "";
   const waHref = `https://wa.me/${site.whatsapp}`;
 
   return (
