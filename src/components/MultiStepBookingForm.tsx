@@ -56,9 +56,9 @@ const MultiStepBookingForm = ({ source = "contact", defaultDestination = "", pac
   const next = () => {
     const err = validate(step);
     if (err) return toast.error(err);
-    setStep((s) => Math.min(2, (s + 1) as Step));
+    setStep((s) => (Math.min(2, s + 1) as Step));
   };
-  const back = () => setStep((s) => Math.max(0, (s - 1) as Step));
+  const back = () => setStep((s) => (Math.max(0, s - 1) as Step));
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
