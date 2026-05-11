@@ -61,6 +61,7 @@ const Navbar = () => {
         </nav>
 
         <div className="hidden items-center gap-2 md:flex">
+          <ThemeToggle />
           {user ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
