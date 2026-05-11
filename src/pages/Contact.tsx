@@ -80,18 +80,7 @@ const Contact = () => {
   );
 };
 
-const Input = ({
-  label,
-  ...props
-}: React.InputHTMLAttributes<HTMLInputElement> & { label: string }) => (
-  <div>
-    <label className="text-xs font-medium uppercase tracking-wider text-muted-foreground">{label}</label>
-    <input
-      {...props}
-      className="mt-2 w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-primary placeholder:text-muted-foreground focus:border-accent focus:outline-none"
-    />
-  </div>
-);
+
 
 const ContactCard = ({
   icon, title, text, href, external = false,
