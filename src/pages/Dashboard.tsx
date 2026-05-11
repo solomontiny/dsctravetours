@@ -28,8 +28,10 @@ type Review = { id: string; package_slug: string; rating: number; title: string 
 
 const Dashboard = () => {
   const { user, profile, loading } = useAuth();
+  const { slugs: favSlugs, toggle: toggleFav } = useFavorites();
   const [bookings, setBookings] = useState<Booking[] | null>(null);
   const [reviews, setReviews] = useState<Review[] | null>(null);
+  const favoritePackages = packages.filter((p) => favSlugs.includes(p.slug));
 
   useEffect(() => {
     if (!user) return;
