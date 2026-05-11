@@ -102,6 +102,19 @@ const PackageCard = ({ pkg, index = 0, onQuickView }: Props) => {
           Quick view
         </button>
       )}
+      <button
+        type="button"
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          toggle(pkg.slug);
+        }}
+        aria-label={fav ? "Remove from favorites" : "Save to favorites"}
+        aria-pressed={fav}
+        className="absolute left-3 top-3 grid h-9 w-9 place-items-center rounded-full bg-background/90 text-primary shadow-soft backdrop-blur transition-colors hover:bg-background sm:left-auto sm:right-14 sm:top-4"
+      >
+        <Heart className={cn("h-4 w-4 transition-colors", fav ? "fill-destructive text-destructive" : "text-primary")} />
+      </button>
     </motion.article>
   );
 };
