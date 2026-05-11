@@ -1,14 +1,9 @@
-import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { motion } from "framer-motion";
-import { Mail, MapPin, Phone, MessageCircle, Send, Loader2 } from "lucide-react";
+import { Mail, MapPin, Phone, MessageCircle } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import Seo from "@/components/Seo";
-import { Button } from "@/components/ui/button";
-import { toast } from "sonner";
+import MultiStepBookingForm from "@/components/MultiStepBookingForm";
 import { site } from "@/lib/site";
-import { contactSchema } from "@/lib/validation";
-import { useBookingSubmit } from "@/hooks/use-booking-submit";
 
 const Contact = () => {
   const [searchParams] = useSearchParams();
