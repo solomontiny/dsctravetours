@@ -13,6 +13,8 @@ type Props = {
 };
 
 const PackageCard = ({ pkg, index = 0, onQuickView }: Props) => {
+  const { isFavorite, toggle } = useFavorites();
+  const fav = isFavorite(pkg.slug);
   return (
     <motion.article
       initial={{ opacity: 0, y: 24 }}
