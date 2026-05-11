@@ -2,14 +2,16 @@ import { useEffect, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
-import { Calendar, MapPin, Users, X, Star } from "lucide-react";
+import { Calendar, MapPin, Users, X, Star, Heart } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
+import { useFavorites } from "@/hooks/use-favorites";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import Seo from "@/components/Seo";
 import PageHero from "@/components/PageHero";
 import { formatNGN } from "@/lib/currency";
+import { packages } from "@/lib/packages";
 
 type Booking = {
   id: string;
@@ -26,8 +28,10 @@ type Review = { id: string; package_slug: string; rating: number; title: string 
 
 const Dashboard = () => {
   const { user, profile, loading } = useAuth();
+  const { slugs: favSlugs, toggle: toggleFav } = useFavorites();
   const [bookings, setBookings] = useState<Booking[] | null>(null);
   const [reviews, setReviews] = useState<Review[] | null>(null);
+  const favoritePackages = packages.filter((p) => favSlugs.includes(p.slug));
 
   useEffect(() => {
     if (!user) return;
@@ -117,6 +121,33 @@ const Dashboard = () => {
                         {Array.from({ length: 5 }).map((_, i) => <Star key={i} className={`h-3.5 w-3.5 ${i < r.rating ? "fill-current" : "opacity-30"}`} />)}
                       </div>
                       <Link to={`/packages/${r.package_slug}`} className="mt-1 block truncate text-sm font-medium text-primary hover:underline">{r.title || r.package_slug}</Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+            <div className="rounded-2xl border border-border bg-card p-6">
+              <h3 className="flex items-center gap-2 font-display text-lg font-semibold text-primary">
+                <Heart className="h-4 w-4 text-destructive" /> Saved trips
+              </h3>
+              {favoritePackages.length === 0 ? (
+                <p className="mt-2 text-sm text-muted-foreground">
+                  Tap the heart on any tour to save it here for later.
+                </p>
+              ) : (
+                <ul className="mt-3 space-y-2">
+                  {favoritePackages.map((p) => (
+                    <li key={p.slug} className="flex items-center justify-between gap-2 rounded-xl border border-border/60 p-2 pl-3">
+                      <Link to={`/packages/${p.slug}`} className="min-w-0 flex-1 truncate text-sm font-medium text-primary hover:underline">
+                        {p.title}
+                      </Link>
+                      <button
+                        onClick={() => toggleFav(p.slug)}
+                        aria-label={`Remove ${p.title} from favorites`}
+                        className="grid h-7 w-7 place-items-center rounded-full text-destructive hover:bg-destructive/10"
+                      >
+                        <X className="h-3.5 w-3.5" />
+                      </button>
                     </li>
                   ))}
                 </ul>

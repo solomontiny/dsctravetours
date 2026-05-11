@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Star, MapPin, Clock, Eye } from "lucide-react";
+import { Star, MapPin, Clock, Eye, Heart } from "lucide-react";
 import type { TourPackage } from "@/lib/packages";
 import { formatNGN } from "@/lib/currency";
+import { useFavorites } from "@/hooks/use-favorites";
+import { cn } from "@/lib/utils";
 
 type Props = {
   pkg: TourPackage;
@@ -11,6 +13,8 @@ type Props = {
 };
 
 const PackageCard = ({ pkg, index = 0, onQuickView }: Props) => {
+  const { isFavorite, toggle } = useFavorites();
+  const fav = isFavorite(pkg.slug);
   return (
     <motion.article
       initial={{ opacity: 0, y: 24 }}
@@ -98,6 +102,19 @@ const PackageCard = ({ pkg, index = 0, onQuickView }: Props) => {
           Quick view
         </button>
       )}
+      <button
+        type="button"
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          toggle(pkg.slug);
+        }}
+        aria-label={fav ? "Remove from favorites" : "Save to favorites"}
+        aria-pressed={fav}
+        className="absolute right-3 top-12 grid h-9 w-9 place-items-center rounded-full bg-background/90 text-primary shadow-soft backdrop-blur transition-colors hover:bg-background sm:right-4 sm:top-14"
+      >
+        <Heart className={cn("h-4 w-4 transition-colors", fav ? "fill-destructive text-destructive" : "text-primary")} />
+      </button>
     </motion.article>
   );
 };

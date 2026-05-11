@@ -1,59 +1,13 @@
-import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { motion } from "framer-motion";
-import { Mail, MapPin, Phone, MessageCircle, Send, Loader2 } from "lucide-react";
+import { Mail, MapPin, Phone, MessageCircle } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import Seo from "@/components/Seo";
-import { Button } from "@/components/ui/button";
-import { toast } from "sonner";
+import MultiStepBookingForm from "@/components/MultiStepBookingForm";
 import { site } from "@/lib/site";
-import { contactSchema } from "@/lib/validation";
-import { useBookingSubmit } from "@/hooks/use-booking-submit";
 
 const Contact = () => {
   const [searchParams] = useSearchParams();
-  const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
-  const { submit, submitting } = useBookingSubmit();
-
-  useEffect(() => {
-    const destination = searchParams.get("destination");
-    if (destination) {
-      setForm((f) => ({
-        ...f,
-        subject: `Booking request: ${destination}`,
-        message: f.message || `Hi, I'd like to book a trip to ${destination}. Please send me more details.`,
-      }));
-    }
-  }, [searchParams]);
-
-
-  const handle = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
-    setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
-
-  const onSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    const parsed = contactSchema.safeParse(form);
-    if (!parsed.success) {
-      toast.error(parsed.error.issues[0]?.message ?? "Please check your details.");
-      return;
-    }
-    const data = parsed.data;
-
-    const ok = await submit({
-      name: data.name,
-      email: data.email,
-      destination: data.subject || "General inquiry",
-      message: data.message,
-      travelers: 1,
-      source: "contact",
-    });
-    if (!ok) return;
-
-    toast.success("Message received. We'll be in touch within 24 hours.");
-    setForm({ name: "", email: "", subject: "", message: "" });
-  };
-
+  const defaultDestination = searchParams.get("destination") ?? "";
   const waHref = `https://wa.me/${site.whatsapp}`;
 
   return (
@@ -110,68 +64,23 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* Form */}
-          <motion.form
-            onSubmit={onSubmit}
-            noValidate
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="rounded-2xl border border-border/70 bg-card p-8 shadow-card md:p-10"
-          >
-            <h2 className="font-display text-2xl font-medium text-primary">Send us a message</h2>
+          {/* Multi-step booking */}
+          <div>
+            <h2 className="font-display text-2xl font-medium text-primary">Plan your trip</h2>
             <p className="mt-2 text-sm text-muted-foreground">
-              Fill in the details below — we typically reply within a few hours.
+              Three quick steps. We typically reply within a few hours.
             </p>
-
-            <div className="mt-8 grid gap-5 md:grid-cols-2">
-              <Input label="Full name" name="name" value={form.name} onChange={handle} placeholder="Ada Okafor" />
-              <Input label="Email address" type="email" name="email" value={form.email} onChange={handle} placeholder="ada@example.com" />
-              <div className="md:col-span-2">
-                <Input label="Subject" name="subject" value={form.subject} onChange={handle} placeholder="Honeymoon planning for August" />
-              </div>
-              <div className="md:col-span-2">
-                <label className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
-                  Message
-                </label>
-                <textarea
-                  name="message"
-                  value={form.message}
-                  onChange={handle}
-                  rows={5}
-                  placeholder="Tell us about your dream trip…"
-                  className="mt-2 w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-primary placeholder:text-muted-foreground focus:border-accent focus:outline-none"
-                />
-              </div>
+            <div className="mt-6">
+              <MultiStepBookingForm source="contact" defaultDestination={defaultDestination} />
             </div>
-
-            <Button type="submit" size="lg" disabled={submitting} className="mt-8 rounded-full px-7">
-              {submitting ? (
-                <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Sending…</>
-              ) : (
-                <><Send className="mr-2 h-4 w-4" /> Send message</>
-              )}
-            </Button>
-          </motion.form>
+          </div>
         </div>
       </section>
     </>
   );
 };
 
-const Input = ({
-  label,
-  ...props
-}: React.InputHTMLAttributes<HTMLInputElement> & { label: string }) => (
-  <div>
-    <label className="text-xs font-medium uppercase tracking-wider text-muted-foreground">{label}</label>
-    <input
-      {...props}
-      className="mt-2 w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-primary placeholder:text-muted-foreground focus:border-accent focus:outline-none"
-    />
-  </div>
-);
+
 
 const ContactCard = ({
   icon, title, text, href, external = false,
