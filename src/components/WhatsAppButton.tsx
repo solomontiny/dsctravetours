@@ -15,7 +15,7 @@ const WhatsAppButton = () => {
       transition={{ delay: 0.6, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
       whileHover={{ scale: 1.06 }}
       whileTap={{ scale: 0.95 }}
-      className="fixed bottom-5 right-5 z-50 grid h-14 w-14 place-items-center rounded-full bg-[#25D366] text-white shadow-elevated md:bottom-7 md:right-7"
+      className="fixed bottom-20 right-4 z-50 grid h-14 w-14 place-items-center rounded-full bg-[#25D366] text-white shadow-elevated md:bottom-7 md:right-7"
     >
       <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#25D366] opacity-25" />
       <svg viewBox="0 0 24 24" className="relative h-6 w-6" fill="currentColor" aria-hidden="true">
