@@ -2,14 +2,16 @@ import { useEffect, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
-import { Calendar, MapPin, Users, X, Star } from "lucide-react";
+import { Calendar, MapPin, Users, X, Star, Heart } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
+import { useFavorites } from "@/hooks/use-favorites";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import Seo from "@/components/Seo";
 import PageHero from "@/components/PageHero";
 import { formatNGN } from "@/lib/currency";
+import { packages } from "@/lib/packages";
 
 type Booking = {
   id: string;
