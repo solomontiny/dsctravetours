@@ -126,6 +126,33 @@ const Dashboard = () => {
                 </ul>
               )}
             </div>
+            <div className="rounded-2xl border border-border bg-card p-6">
+              <h3 className="flex items-center gap-2 font-display text-lg font-semibold text-primary">
+                <Heart className="h-4 w-4 text-destructive" /> Saved trips
+              </h3>
+              {favoritePackages.length === 0 ? (
+                <p className="mt-2 text-sm text-muted-foreground">
+                  Tap the heart on any tour to save it here for later.
+                </p>
+              ) : (
+                <ul className="mt-3 space-y-2">
+                  {favoritePackages.map((p) => (
+                    <li key={p.slug} className="flex items-center justify-between gap-2 rounded-xl border border-border/60 p-2 pl-3">
+                      <Link to={`/packages/${p.slug}`} className="min-w-0 flex-1 truncate text-sm font-medium text-primary hover:underline">
+                        {p.title}
+                      </Link>
+                      <button
+                        onClick={() => toggleFav(p.slug)}
+                        aria-label={`Remove ${p.title} from favorites`}
+                        className="grid h-7 w-7 place-items-center rounded-full text-destructive hover:bg-destructive/10"
+                      >
+                        <X className="h-3.5 w-3.5" />
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
             <div className="rounded-2xl border border-border bg-card p-6 text-sm text-muted-foreground">
               <p className="text-primary font-medium">Need help?</p>
               <p className="mt-2">Our travel team is on standby on WhatsApp and email to help you adjust trips.</p>
