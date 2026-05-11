@@ -7,6 +7,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Layout from "@/components/layout/Layout";
 import Index from "./pages/Index.tsx";
 import { AuthProvider } from "@/contexts/AuthContext";
+import { ThemeProvider } from "@/contexts/ThemeContext";
 
 // Lazy-load secondary routes to keep the initial bundle lean.
 const Services = lazy(() => import("./pages/Services.tsx"));
