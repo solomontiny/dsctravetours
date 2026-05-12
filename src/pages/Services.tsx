@@ -31,8 +31,12 @@ const services: ServiceDetail[] = [
   {
     icon: ShieldCheck,
     title: "Travel Insurance",
-    text: "Comprehensive coverage for medical, baggage and trip interruption — for individuals and groups.",
-    bullets: ["Medical & emergency evacuation", "Baggage & flight delay cover", "Schengen-compliant policies"],
+    text: "Travel insurance is a mandatory requirement at all Schengen embassies including France, Germany, Italy, Netherlands, Iceland, Luxembourg, Belgium, Sweden, Denmark, Greece, Finland, Norway, Spain, Portugal, Slovakia, Slovenia, Malta, Lithuania, Latvia, Hungary, Estonia, Czech Republic, Austria, Bulgaria, Romania, Switzerland and Poland. Our travel insurance plan is fully recognized and accepted by both Schengen and non-Schengen embassies. Available for corporate entities and individuals.",
+    bullets: [
+      "Schengen-compliant insurance accepted by all embassies",
+      "Medical, baggage & emergency evacuation cover",
+      "Available for individuals and corporate clients"
+    ],
   },
   {
     icon: Car,
@@ -69,6 +73,7 @@ const Services = () => {
         title="Travel Services"
         description="Flight booking, visa processing, hotel reservations, travel insurance, airport pickup, protocol and bespoke tour packaging."
       />
+
       <PageHero
         eyebrow="Services"
         title="Everything you need to travel well."
@@ -92,8 +97,15 @@ const Services = () => {
                 <div className="grid h-12 w-12 place-items-center rounded-xl bg-accent-soft text-primary">
                   <s.icon className="h-5 w-5" />
                 </div>
-                <h3 className="mt-5 font-display text-xl font-medium text-primary">{s.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{s.text}</p>
+
+                <h3 className="mt-5 font-display text-xl font-medium text-primary">
+                  {s.title}
+                </h3>
+
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  {s.text}
+                </p>
+
                 <div className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-accent transition-opacity opacity-70 group-hover:opacity-100">
                   Learn more <ArrowRight className="h-3.5 w-3.5" />
                 </div>
