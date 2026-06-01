@@ -53,6 +53,7 @@ const BookingForm = ({ compact = false, source = "website", defaultDestination =
     toast.success("Booking request received!");
     setConfirmation(form);
     setForm({ ...initial, destination: defaultDestination });
+    onSuccess?.();
   };
 
   if (confirmation) {
