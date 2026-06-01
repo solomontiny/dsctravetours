@@ -53,19 +53,25 @@ const Navbar = () => {
     >
       <div className="container-wide flex h-16 items-center justify-between md:h-20">
 
-        {/* ✅ CLICKABLE LOGO FIXED HERE */}
+        {/* Clickable logo — always returns to home */}
         <Link
           to="/"
-          className="flex items-center gap-3 cursor-pointer select-none"
-          aria-label={`${site.name} homepage`}
+          className="group flex items-center gap-2.5 rounded-full px-1 py-1 -ml-1 cursor-pointer select-none focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 sm:gap-3"
+          aria-label={`${site.name} — go to homepage`}
         >
           <img
             src={logo}
             alt={`${site.name} logo`}
-            className="h-9 w-auto transition-transform duration-300 hover:scale-105 md:h-10"
+            className="h-9 w-auto rounded-md transition-transform duration-300 group-hover:scale-[1.04] md:h-10"
             width={160}
             height={40}
           />
+          <span className="hidden font-display text-base font-semibold tracking-tight text-primary sm:inline-flex sm:flex-col sm:leading-none">
+            {site.shortName}
+            <span className="mt-0.5 text-[10px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
+              Travels & Tours
+            </span>
+          </span>
         </Link>
 
         <nav className="hidden items-center gap-9 md:flex" aria-label="Primary">

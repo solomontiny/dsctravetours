@@ -14,9 +14,10 @@ type Props = {
   defaultDestination?: string;
   packageSlug?: string;
   priceNgn?: number;
+  onSuccess?: () => void;
 };
 
-const BookingForm = ({ compact = false, source = "website", defaultDestination = "", packageSlug, priceNgn }: Props) => {
+const BookingForm = ({ compact = false, source = "website", defaultDestination = "", packageSlug, priceNgn, onSuccess }: Props) => {
   const { user, profile } = useAuth();
   const initial = { name: "", destination: defaultDestination, date: "", travelers: "2" };
   const [form, setForm] = useState(initial);
@@ -52,6 +53,7 @@ const BookingForm = ({ compact = false, source = "website", defaultDestination =
     toast.success("Booking request received!");
     setConfirmation(form);
     setForm({ ...initial, destination: defaultDestination });
+    onSuccess?.();
   };
 
   if (confirmation) {
