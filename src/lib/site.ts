@@ -3,8 +3,8 @@ export const site = {
   shortName: "DSC",
   tagline: "Travel Beyond Ordinary",
   email: "info@dsctravelstours.com",
-  phone: "+234 800 000 0000",
-  whatsapp: "2348000000000", // digits only, no +
+  phone: "+234 808 060 9854",
+  whatsapp: "2348080609854", // digits only, no +
   address: "5a Adekunle Lawal Street, off Oba Adeyinka Oyekan Road, Ikoyi, Lagos, Nigeria",
   social: {
     instagram: "#",
