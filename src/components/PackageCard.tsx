@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Star, MapPin, Clock, Eye, Heart } from "lucide-react";
+import { MapPin, Clock, Eye, Heart } from "lucide-react";
 import type { TourPackage } from "@/lib/packages";
 import { formatNGN } from "@/lib/currency";
 import { useFavorites } from "@/hooks/use-favorites";
@@ -37,10 +37,6 @@ const PackageCard = ({ pkg, index = 0, onQuickView }: Props) => {
           <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-overlay" />
           <span className="absolute left-3 top-3 inline-flex items-center gap-1 rounded-full bg-background/90 px-2.5 py-1 text-[11px] font-medium text-primary backdrop-blur sm:left-4 sm:top-4 sm:px-3 sm:text-xs">
             {pkg.category}
-          </span>
-          <span className="absolute right-3 top-3 inline-flex items-center gap-1 rounded-full bg-background/90 px-2 py-1 text-[11px] font-medium text-primary backdrop-blur sm:right-4 sm:top-4 sm:px-2.5 sm:text-xs">
-            <Star className="h-3 w-3 fill-accent text-accent" />
-            {pkg.rating.toFixed(1)}
           </span>
         </div>
 
