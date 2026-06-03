@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Star, ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export type Testimonial = { name: string; role: string; quote: string };
 
@@ -41,12 +41,7 @@ const TestimonialsCarousel = ({ items, intervalMs = 6000 }: Props) => {
             exit={{ opacity: 0, y: -16 }}
             transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="flex gap-0.5">
-              {Array.from({ length: 5 }).map((_, j) => (
-                <Star key={j} className="h-3.5 w-3.5 fill-accent text-accent" />
-              ))}
-            </div>
-            <blockquote className="mt-5 font-display text-xl font-medium leading-relaxed text-foreground/90 md:text-2xl">
+            <blockquote className="font-display text-xl font-medium leading-relaxed text-foreground/90 md:text-2xl">
               “{items[idx].quote}”
             </blockquote>
             <figcaption className="mt-6 border-t border-border/60 pt-4">

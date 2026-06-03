@@ -9,9 +9,11 @@ import {
   FileCheck2,
   Car,
   Briefcase,
-  Star,
   Award,
   HeartHandshake,
+  Users,
+  Globe2,
+  BadgeCheck,
 } from "lucide-react";
 import hero from "@/assets/hero-main.jpg";
 import { Button } from "@/components/ui/button";
@@ -44,7 +46,7 @@ const trustStats = [
   { k: "500+", v: "Happy travelers" },
   { k: "30+", v: "Destinations" },
   { k: "98%", v: "Visa success" },
-  { k: "4.9", v: "Avg. rating", icon: Star },
+  { k: "15+", v: "Years experience" },
 ];
 
 const testimonials = [
@@ -119,11 +121,6 @@ const Index = () => {
       addressLocality: "Lagos",
       addressCountry: "NG",
     },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.9",
-      reviewCount: "120",
-    },
   };
 
   const faqJsonLd = {
@@ -168,8 +165,8 @@ const Index = () => {
             className="max-w-3xl"
           >
             <span className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-card/70 px-3 py-1.5 text-[11px] font-medium uppercase tracking-[0.18em] text-primary backdrop-blur-md">
-              <Star className="h-3 w-3 fill-accent text-accent" />
-              Premium travel · Rated 4.9
+              <Award className="h-3 w-3 text-accent" />
+              Premium travel · Since 2010
             </span>
             <h1 className="mt-5 font-display text-[2.5rem] font-medium leading-[1.05] text-primary sm:text-5xl md:text-7xl lg:text-[5.25rem]">
               Travel beyond <em className="font-display italic text-accent">ordinary</em>.
@@ -203,7 +200,6 @@ const Index = () => {
               <div key={s.v} className="flex items-center justify-center gap-3 bg-card/85 px-6 py-5 text-center backdrop-blur">
                 <div className="font-display text-2xl font-semibold text-primary md:text-3xl">
                   {s.k}
-                  {s.icon && <s.icon className="ml-1 inline h-4 w-4 fill-accent text-accent" />}
                 </div>
                 <div className="text-xs uppercase tracking-wider text-muted-foreground">{s.v}</div>
               </div>
@@ -249,6 +245,77 @@ const Index = () => {
             <Button asChild variant="ghost" className="rounded-full">
               <Link to="/services">See all services <ArrowRight className="ml-2 h-4 w-4" /></Link>
             </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* About Us */}
+      <section className="bg-secondary/30 py-16 sm:py-20 md:py-32">
+        <div className="container-wide">
+          <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
+            {/* Text content */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <span className="eyebrow">About Us</span>
+              <h2 className="mt-4 font-display text-3xl font-medium leading-tight text-primary md:text-4xl lg:text-[2.75rem]">
+                Your trusted travel partner, <em className="italic text-accent">from Lagos to the world.</em>
+              </h2>
+              <div className="mt-6 space-y-4 text-[15px] leading-[1.8] text-muted-foreground sm:text-base">
+                <p>
+                  We are excited to introduce <strong className="text-primary">DSC Travels and Tours Ltd</strong>, a legally registered travel agency that provides top-notch travel and tourism services to individuals, groups, and corporate clients within and outside Nigeria.
+                </p>
+                <p>
+                  We understand that every journey is unique, and we are committed to creating a pleasurable experience that suits your needs, preferences, and budget. This proposal outlines personalized travel solutions to ensure an unforgettable adventure.
+                </p>
+                <p>
+                  We are here to work with you in all your upcoming travel plans and schedules. We aim to provide you with a seamless and enjoyable travel experience that befits your prestigious organization.
+                </p>
+              </div>
+
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Button asChild size="lg" className="rounded-full px-7">
+                  <Link to="/contact">Plan a trip <ArrowRight className="ml-2 h-4 w-4" /></Link>
+                </Button>
+                <Button asChild size="lg" variant="outline" className="rounded-full px-7">
+                  <Link to="/services">Our services</Link>
+                </Button>
+              </div>
+            </motion.div>
+
+            {/* Visual / value cards */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+              className="grid gap-4 sm:grid-cols-2"
+            >
+              {[
+                { icon: BadgeCheck, title: "Licensed & Registered", text: "A fully registered Nigerian travel agency operating within all legal frameworks." },
+                { icon: Users, title: "Individuals & Corporate", text: "Tailored travel solutions for solo travelers, families, and corporate clients." },
+                { icon: Globe2, title: "Global Reach", text: "Serving clients within and outside Nigeria with worldwide destination expertise." },
+                { icon: HeartHandshake, title: "Personalized Service", text: "Every itinerary is crafted around your needs, preferences, and budget." },
+              ].map((v, i) => (
+                <motion.div
+                  key={v.title}
+                  initial={{ opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{ duration: 0.4, delay: 0.2 + i * 0.08 }}
+                  className="rounded-2xl border border-border/70 bg-card p-6 shadow-soft"
+                >
+                  <div className="grid h-10 w-10 place-items-center rounded-xl bg-accent-soft text-primary">
+                    <v.icon className="h-5 w-5" />
+                  </div>
+                  <h3 className="mt-4 font-display text-base font-medium text-primary">{v.title}</h3>
+                  <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{v.text}</p>
+                </motion.div>
+              ))}
+            </motion.div>
           </div>
         </div>
       </section>
