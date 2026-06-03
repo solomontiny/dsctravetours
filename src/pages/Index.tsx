@@ -46,7 +46,7 @@ const trustStats = [
   { k: "500+", v: "Happy travelers" },
   { k: "30+", v: "Destinations" },
   { k: "98%", v: "Visa success" },
-  { k: "4.9", v: "Avg. rating", icon: Star },
+  { k: "15+", v: "Years experience" },
 ];
 
 const testimonials = [
@@ -121,11 +121,6 @@ const Index = () => {
       addressLocality: "Lagos",
       addressCountry: "NG",
     },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.9",
-      reviewCount: "120",
-    },
   };
 
   const faqJsonLd = {
@@ -170,8 +165,8 @@ const Index = () => {
             className="max-w-3xl"
           >
             <span className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-card/70 px-3 py-1.5 text-[11px] font-medium uppercase tracking-[0.18em] text-primary backdrop-blur-md">
-              <Star className="h-3 w-3 fill-accent text-accent" />
-              Premium travel · Rated 4.9
+              <Award className="h-3 w-3 text-accent" />
+              Premium travel · Since 2010
             </span>
             <h1 className="mt-5 font-display text-[2.5rem] font-medium leading-[1.05] text-primary sm:text-5xl md:text-7xl lg:text-[5.25rem]">
               Travel beyond <em className="font-display italic text-accent">ordinary</em>.
