@@ -200,7 +200,6 @@ const Index = () => {
               <div key={s.v} className="flex items-center justify-center gap-3 bg-card/85 px-6 py-5 text-center backdrop-blur">
                 <div className="font-display text-2xl font-semibold text-primary md:text-3xl">
                   {s.k}
-                  {s.icon && <s.icon className="ml-1 inline h-4 w-4 fill-accent text-accent" />}
                 </div>
                 <div className="text-xs uppercase tracking-wider text-muted-foreground">{s.v}</div>
               </div>
