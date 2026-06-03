@@ -9,9 +9,11 @@ import {
   FileCheck2,
   Car,
   Briefcase,
-  Star,
   Award,
   HeartHandshake,
+  Users,
+  Globe2,
+  BadgeCheck,
 } from "lucide-react";
 import hero from "@/assets/hero-main.jpg";
 import { Button } from "@/components/ui/button";
