@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import Seo from "@/components/Seo";
 import PageHero from "@/components/PageHero";
+import dashHero from "@/assets/dest-zanzibar.jpg";
 import { formatNGN } from "@/lib/currency";
 import { packages } from "@/lib/packages";
 
@@ -60,7 +61,7 @@ const Dashboard = () => {
   return (
     <>
       <Seo title="My dashboard" description="Manage your bookings, reviews, and travel preferences." />
-      <PageHero eyebrow={`Hi, ${name}`} title="Your travel dashboard" description="Track your bookings, leave reviews, and plan your next adventure." />
+      <PageHero eyebrow={`Hi, ${name}`} title="Your travel dashboard" description="Track your bookings, leave reviews, and plan your next adventure." image={dashHero} imageAlt="Turquoise Zanzibar shoreline" />
 
       <section className="py-12 md:py-16">
         <div className="container-wide grid gap-8 lg:grid-cols-[1fr_320px]">

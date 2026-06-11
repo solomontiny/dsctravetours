@@ -8,6 +8,7 @@ import PageHero from "@/components/PageHero";
 import Seo from "@/components/Seo";
 import { Button } from "@/components/ui/button";
 import ServiceQuickView, { type ServiceDetail } from "@/components/ServiceQuickView";
+import servicesHero from "@/assets/service-flight.jpg";
 
 const services: ServiceDetail[] = [
   {
@@ -78,6 +79,8 @@ const Services = () => {
         eyebrow="Services"
         title="Everything you need to travel well."
         description="Seven services, one team. We handle the planning, paperwork and logistics so your only job is to show up and enjoy."
+        image={servicesHero}
+        imageAlt="Aircraft wing above the clouds at sunset"
       />
 
       <section className="py-14 sm:py-20 md:py-28">

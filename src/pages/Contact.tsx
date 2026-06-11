@@ -4,6 +4,7 @@ import PageHero from "@/components/PageHero";
 import Seo from "@/components/Seo";
 import MultiStepBookingForm from "@/components/MultiStepBookingForm";
 import { site } from "@/lib/site";
+import contactHero from "@/assets/dest-dubai.jpg";
 
 const Contact = () => {
   const [searchParams] = useSearchParams();
@@ -20,6 +21,8 @@ const Contact = () => {
         eyebrow="Contact"
         title="Let's plan something memorable."
         description="Tell us where you'd like to go — we'll come back with a thoughtful plan within 24 hours."
+        image={contactHero}
+        imageAlt="Dubai skyline at twilight"
       />
 
       <section className="py-20 md:py-24">

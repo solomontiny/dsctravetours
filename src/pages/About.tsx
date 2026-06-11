@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ShieldCheck, Plane, Globe2, MessageCircle, ArrowRight, Check } from "lucide-react";
 import PageHero from "@/components/PageHero";
+import aboutHero from "@/assets/dest-capetown.jpg";
 
 import Seo from "@/components/Seo";
 import { Button } from "@/components/ui/button";
@@ -104,6 +105,8 @@ const About = () => {
       eyebrow="About travel insurance"
       title="Travel safe. Travel free. Travel beyond ordinary."
       description="DSC Travels and Tours partners with leading insurance providers and helps Nigerian passport holders unlock the world — visa-free."
+      image={aboutHero}
+      imageAlt="Cape Town coastline with Table Mountain"
     />
 
     {/* Travel Insurance */}
