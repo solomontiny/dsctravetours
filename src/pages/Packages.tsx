@@ -9,6 +9,7 @@ import { categories, packages, type TourCategory, type TourPackage } from "@/lib
 import { formatNGN } from "@/lib/currency";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import packagesHero from "@/assets/dest-santorini.jpg";
 
 type Filter = "All" | TourCategory;
 type SortKey = "recommended" | "price-asc" | "price-desc" | "rating";
@@ -81,6 +82,8 @@ const Packages = () => {
         eyebrow="Tour packages"
         title="Curated trips, ready to book."
         description="Hand-picked journeys across Africa, Europe, Asia and the Middle East. Filter by style, budget or search a destination."
+        image={packagesHero}
+        imageAlt="Santorini cliffside at sunset"
       />
 
       <section className="py-16 md:py-20">

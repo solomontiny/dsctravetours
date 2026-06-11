@@ -6,6 +6,7 @@ import PageHero from "@/components/PageHero";
 import Seo from "@/components/Seo";
 import { posts } from "@/lib/blog";
 import { cn } from "@/lib/utils";
+import blogHero from "@/assets/dest-paris.jpg";
 
 const categories = ["All", "Guides", "Destinations", "Tips", "Visa"] as const;
 type Cat = (typeof categories)[number];
@@ -28,6 +29,8 @@ const Blog = () => {
         eyebrow="Travel guide"
         title="Stories, guides and notes from the road."
         description="Practical advice, destination deep-dives and visa tips — written by our team and travelers."
+        image={blogHero}
+        imageAlt="Parisian street with the Eiffel Tower"
       />
 
       <section className="py-16 md:py-20">

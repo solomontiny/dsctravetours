@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import Seo from "@/components/Seo";
 import PageHero from "@/components/PageHero";
+import dashHero from "@/assets/dest-zanzibar.jpg";
 import { formatNGN } from "@/lib/currency";
 import { packages } from "@/lib/packages";
 
