@@ -29,6 +29,7 @@ import PackageCard from "@/components/PackageCard";
 import PackageQuickView from "@/components/PackageQuickView";
 import ServiceQuickView, { type ServiceDetail } from "@/components/ServiceQuickView";
 import TestimonialsCarousel from "@/components/TestimonialsCarousel";
+import HeroSlider from "@/components/HeroSlider";
 import Seo from "@/components/Seo";
 import { packages, featuredSlugs, type TourPackage } from "@/lib/packages";
 import { site } from "@/lib/site";
@@ -207,6 +208,9 @@ const Index = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* Destinations slider */}
+      <HeroSlider />
 
       {/* Services */}
       <section className="py-16 sm:py-20 md:py-32">
